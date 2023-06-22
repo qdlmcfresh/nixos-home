@@ -14,13 +14,12 @@
     enable = true;
     userSettings = {
       "editor.renderWhitespace" = "all";
-      "editor.rulers" = [ 80 120 ];
+      "editor.rulers" = [ 120 ];
       "telemetry.enableTelemetry" = false;
       "telemetry.enableCrashReporter" = false;
       "files.exclude" = { "**/node_modules/**" = true; };
-      "editor.formatOnSave" = false;
+      "editor.formatOnSave" = true;
       "breadcrumbs.enabled" = true;
-      "editor.useTabStops" = false;
       "editor.lineHeight" = 20;
       "workbench.fontAliasing" = "antialiased";
       "files.trimTrailingWhitespace" = true;
@@ -30,7 +29,7 @@
     package =
       let
         config.packageOverrides = pkgs: {
-          vscode = pkgs.vscode-with-extensions.override {
+          vscode = pkgs.vscode.override {
             vscodeExtensions = with nix-vscode-extensions.extensions; [
               espressif.esp-idf-extension
               GitHub.copilot
