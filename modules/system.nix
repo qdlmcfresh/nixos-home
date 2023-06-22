@@ -22,9 +22,8 @@
 	
 	# Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-	
-	services.openssh = {
-  	enable = true;
+  services.openssh = {
+    enable = true;
     settings = {
       X11Forwarding = true;
       PermitRootLogin = "no";         # disable root login
@@ -33,7 +32,7 @@
     openFirewall = true;
   };
 	
-	environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
@@ -45,9 +44,9 @@
     neofetch
   ];
 	
-	security.polkit.enable = true;
+  security.polkit.enable = true;
 	
-	# Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
