@@ -3,13 +3,12 @@
 
   nixConfig = {
     experimental-features = ["nix-command" "flakes"];
-	};
-	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		home-manager.url = "github:nix-community/home-manager";
-		home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-	};
+  };
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
 		nixosConfigurations = {
 			nixos-vmware = nixpkgs.lib.nixosSystem {

@@ -1,4 +1,4 @@
-{configs, pkgs, ...}
+{configs, pkgs, ...}:
 
 {
 	imports = [
@@ -20,4 +20,4 @@
 	networking.networkmanager.enable = true;
 	
 	system.stateVersion = "23.05";
-};
+}
