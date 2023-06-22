@@ -25,5 +25,7 @@
       "files.trimTrailingWhitespace" = true;
       "editor.minimap.enabled" = false;
       "workbench.editor.enablePreview" = false;
+    };
   };
+
 }
