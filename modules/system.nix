@@ -2,7 +2,7 @@
 
 
 {
-	# Set your time zone.
+  # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
@@ -19,14 +19,14 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-	# Allow unfree packages
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   services.openssh = {
     enable = true;
     settings = {
       X11Forwarding = true;
-      PermitRootLogin = "no";         # disable root login
+      PermitRootLogin = "no"; # disable root login
       #PasswordAuthentication = false; # disable password login
     };
     openFirewall = true;
@@ -50,8 +50,8 @@
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
-    packages = with pkgs; [];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    packages = with pkgs; [ ];
   };
 
 

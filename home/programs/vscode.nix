@@ -29,7 +29,7 @@
     package =
       let
         config.packageOverrides = pkgs: {
-          vscode = pkgs.vscode.override {
+          vscode = pkgs.vscode-with-extensions.override {
             vscodeExtensions = with nix-vscode-extensions.extensions; [
               espressif.esp-idf-extension
               GitHub.copilot
@@ -48,7 +48,7 @@
               ms-vscode-remote.remote-ssh-edit
               ms-vscode-remote.vscode-remote-extensionpack
               ms-vscode.cmake-tools
-              ms-vscode.cpptools
+              ms-vscode.cpptools1
               ms-vscode.cpptools-extension-pack
               ms-vscode.cpptools-themes
               ms-vscode.remote-explorer

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -16,6 +16,8 @@
 
     # cloud native
     docker-compose
+
+    nixpkgs-fmt
   ];
 
   programs = {
