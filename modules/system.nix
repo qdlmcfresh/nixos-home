@@ -19,7 +19,7 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-	
+	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 	# Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   services.openssh = {
@@ -31,7 +31,7 @@
     };
     openFirewall = true;
   };
-	
+
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -43,9 +43,9 @@
     scrot
     neofetch
   ];
-	
+
   security.polkit.enable = true;
-	
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qdl = {
     isNormalUser = true;
@@ -53,6 +53,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [];
   };
-	
-	
+
+
 }
