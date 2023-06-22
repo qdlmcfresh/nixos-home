@@ -1,9 +1,9 @@
-{ 
+{
   config,
   pkgs,
   home-manager,
-  ... 
-}: 
+  ...
+}:
 
 {
 
@@ -26,6 +26,40 @@
       "editor.minimap.enabled" = false;
       "workbench.editor.enablePreview" = false;
     };
+    package =
+      let
+        config.packageOverrides = pkgs: {
+          vscode = pkgs.vscode-with-extensions.override {
+            vscodeExtensions = with nix-vscode-extensions.extensions; [
+              espressif.esp-idf-extension
+              GitHub.copilot
+              jnoortheen.nix-ide
+              ms-azuretools.vscode-docker
+              ms-python.isort
+              ms-python.python
+              ms-python.vscode-pylance
+              ms-toolsai.jupyter
+              ms-toolsai.jupyter-keymap
+              ms-toolsai.jupyter-renderers
+              ms-toolsai.vscode-jupyter-cell-tags
+              ms-toolsai.vscode-jupyter-slideshow
+              ms-vscode-remote.remote-containers
+              ms-vscode-remote.remote-ssh
+              ms-vscode-remote.remote-ssh-edit
+              ms-vscode-remote.vscode-remote-extensionpack
+              ms-vscode.cmake-tools
+              ms-vscode.cpptools
+              ms-vscode.cpptools-extension-pack
+              ms-vscode.cpptools-themes
+              ms-vscode.remote-explorer
+              ms-vscode.remote-server
+              pinage404.nix-extension-pack
+              platformio.platformio-ide
+            ];
+          };
+        };
+      in
+        pkgs.vscode;
   };
 
 }
