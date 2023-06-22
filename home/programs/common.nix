@@ -24,6 +24,6 @@
       enable = true;
       clock24 = true;
     };
-    jq.enable;
+    jq.enable = true;
   };
 }
