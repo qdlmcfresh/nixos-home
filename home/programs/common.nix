@@ -26,13 +26,14 @@
       clock24 = true;
     };
     jq.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true; # set nvim as default editor
+      extraConfig = ''
+        set number relativenumber
+      '';
+    };
   };
 
-  neovim = {
-    enable = true;
-    defaultEditor = true; # set nvim as default editor
-    extraConfig = ''
-      set number relativenumber
-    '';
-  };
+
 }
