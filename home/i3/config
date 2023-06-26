@@ -129,22 +129,8 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #####################################################################################################################
 #################                          3 menu's in arcolinux                                     #################
 #####################################################################################################################
-
-# start dmenu
-#bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
-# gmrun
-bindsym $mod+F2 exec --no-startup-id gmrun
-
-# start xfce-appfinder
-bindsym $mod+F3 exec --no-startup-id xfce4-appfinder
-
 # start rofi full
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-4/launcher.sh #rofi -show run -fullscreen -font "Noto Sans 13"
-
-# start rofi small
-bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 13"
-
+bindsym $mod+d exec --no-startup-id rofi -show run -font "Hack 13"
 
 
 #####################################################################################################################
@@ -858,81 +844,18 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 bar {
-#
-    height -1
-    workspace_buttons yes
-    font pango:Noto Sans 14
-#
+    font pango:Hack 12
     position top
-#    #position bottom
-#
-    system icons
-    tray_output none
-#    #tray_output $firstMonitor
-#    #tray_output $secondMonitor
-#
-#
-#
-#    # OPTION 1 : i3status
-#
-#    # type status_command i3status without the config file and
-#    # you will get the standard i3status bar
-#    # Second one is the standard statusbar with my personal settings
-#
-     status_command i3status
-#    #status_command i3status -c ~/.config/i3/i3status.conf
-#
-#
-#
-#    # OPTION 2 : i3blocks
-#
-#    # https://github.com/vivien/i3blocks
-#    # another way to provide text in the statusbar
-#    # put hastag in front if not installed
-#
-#    #status_command i3blocks
-#    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#    #status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
-#    #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
-#    #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
-#
-#
-#    # OPTION 3 : conky
-#
-#    # You can also replace the istatus bar with a conky
-#    # start-conky-i3statusbar.sh is started and conky will follow
-#    # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
-#    # conky configuration is in conky-i3statusbar
-#
-#    #status_command ~/.config/i3/start-conky-i3statusbar.sh
-#
-#
-#
-#    # OPTION 4 : polybar
-#
-#    # polybar is launched elsewhere - search for the word
-#    # from the opening of the "bar {...}" till the end has to go or hashtagged out
-#    # in order for the system trayicons to show up in polybar
-#
-#
-#    ##START THEMING BAR
-#    #Theme name : ArcoLinux Default
-#
-#    # i3 bar colors
-#    # variable border background Text
-#
+    status_command i3status-rs ~/.config/i3status-rust/config.toml
     colors {
-        background #2F2F2F
-        statusline #eeeeee
-        separator  #666666
-
-        # colorclass           border  backgr. text
-        focused_workspace     #a9a9a9 #5f676a #eeeeee
-        active_workspace      #a9a9a9 #5f676a #eeeeee
-        inactive_workspace    #a9a9a9 #222222 #a9a9a9
-        urgent_workspace      #a9a9a9 #d42121 #FFFFFF
-        }
-
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
 }
     ##STOP THEMING BAR
 
@@ -950,7 +873,3 @@ bar {
     client.background       #242424
 
     ##STOP THEMING WM
-
-
-
-

@@ -27,4 +27,10 @@
   # networking.interfaces.ens33.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  hardware.opengl = {
+    enable = true;
+  };
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
 }

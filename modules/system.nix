@@ -42,17 +42,23 @@
     # print screen key is also bound to this tool in i3 config
     scrot
     neofetch
+    pavucontrol
+    python3
   ];
 
   security.polkit.enable = true;
-
+  programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
     packages = with pkgs; [ ];
+    shell = pkgs.zsh;
   };
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
+  ];
 
 }

@@ -5,8 +5,8 @@
 }:
 {
   home.file.".config/i3/config".source = ./config;
-
-  xresources.properties = {
-    "Xft.dpi" = 160;
-  };
+  programs.i3status-rust.enable = true;
+  # xresources.properties = {
+  #   "Xft.dpi" = 160;
+  # };
 }

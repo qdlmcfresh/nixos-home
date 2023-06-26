@@ -18,9 +18,15 @@
     docker-compose
 
     nixpkgs-fmt
+
+    #browser
+    firefox
   ];
 
   programs = {
+    kitty = {
+      enable = true;
+    };
     tmux = {
       enable = true;
       clock24 = true;

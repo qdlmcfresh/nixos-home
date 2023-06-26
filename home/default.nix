@@ -5,6 +5,7 @@
   imports = [
     ./programs
     ./i3
+    ./i3status-rust
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -12,7 +13,6 @@
   home = {
     username = "qdl";
     homeDirectory = "/home/qdl";
-
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
