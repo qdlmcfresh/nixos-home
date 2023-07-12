@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, bw-key, ... }: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -28,6 +28,8 @@
     gcc
     pkg-config
     openssl
+
+    bw-key.defaultPackage.${pkgs.system}
   ];
 
   programs = {

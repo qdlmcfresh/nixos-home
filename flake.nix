@@ -9,8 +9,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    bw-key.url = "github:qdlmcfresh/bw-key";
+    bw-key.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-vscode-extensions, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-vscode-extensions, bw-key, ... }:
     {
       nixosConfigurations = {
         nixos-vmware = nixpkgs.lib.nixosSystem {
