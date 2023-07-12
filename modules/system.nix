@@ -48,11 +48,15 @@
 
   security.polkit.enable = true;
   programs.zsh.enable = true;
+  programs.ssh = {
+    startAgent = true;
+  };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
     extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
+    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGvUpLK6QzRtX5FHfdLrt37cQZcGFXmOmkQmWOv5YH7irOVVpj+/MeN6KWziTGPvdYmq1SOVbYnCrEoCgSlChE4ZUt9DFcpPhgKDzkVZVK2y25EEVEnxO2p64J0OtTt54rl3ODvzc0a5wSI5aVJSGaVVtaUWlwRESs3DdD9Y0XxmpW2vxP+z7SOrNFQqfGLOXp9PXu3BPF6G6ZeGxu5fBhoiInX6dKf3NvLYwaT9ZXy0Ur279LowCw4R9kMDzNb4KPJcC7Q04VsFtzyf83uxOmpFwFOWfXKIWd+/8RdfjJrVR+7SWXiuH4x9Fsb0ofmis7vg7sud1Hp/xI/ZRbk6W3" ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };

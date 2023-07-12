@@ -8,7 +8,7 @@
     # utils
     ripgrep
     htop
-
+    file
     # misc
     libnotify
     xdg-utils
@@ -21,6 +21,13 @@
 
     #browser
     firefox
+
+    #rust
+    rustc
+    cargo
+    gcc
+    pkg-config
+    openssl
   ];
 
   programs = {
@@ -40,6 +47,4 @@
       '';
     };
   };
-
-
 }
