@@ -29,6 +29,8 @@
     pkg-config
     openssl
 
+    nix-init
+
     bw-key.defaultPackage.${pkgs.system}
   ];
 
