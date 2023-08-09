@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     initExtra = ''
       [[ $(builtin bindkey "^[[1;5C") == *" undefined-key" ]] && builtin bindkey "^[[1;5C" "forward-word"
       [[ $(builtin bindkey "^[[1;5D") == *" undefined-key" ]] && builtin bindkey "^[[1;5D" "backward-word"
@@ -12,6 +12,7 @@
       ll = "ls -l";
       la = "ls -la";
       update = "sudo nixos-rebuild switch --flake ~/nixos-home#nixos-vmware";
+      loadsshkeys = "bw-key --host https://vault.qdlbox.de --name qdlmcfresh@gmail.com --method yubikey";
     };
     oh-my-zsh = {
       enable = true;
