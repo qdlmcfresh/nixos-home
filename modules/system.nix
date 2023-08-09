@@ -20,6 +20,12 @@
     LC_TIME = "de_DE.UTF-8";
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 30d";
+  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   services.openssh = {
@@ -61,7 +67,7 @@
     shell = pkgs.zsh;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
   ];
 
