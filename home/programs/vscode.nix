@@ -56,6 +56,7 @@ in
       ms-vscode.remote-server
       pinage404.nix-extension-pack
       platformio.platformio-ide
+      rust-lang.rust-analyzer
     ] ++ ext;
   };
 
