@@ -4,11 +4,6 @@
 , nix-vscode-extensions
 , ...
 }:
-let
-  ext = with pkgs.vscode-extensions; [
-    github.copilot
-  ];
-in
 {
   # if use vscode in wayland, uncomment this line
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -33,7 +28,6 @@ in
     };
     extensions = with nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
       espressif.esp-idf-extension
-      #github.copilot
       jnoortheen.nix-ide
       ms-azuretools.vscode-docker
       ms-python.isort
@@ -57,7 +51,7 @@ in
       pinage404.nix-extension-pack
       platformio.platformio-ide
       rust-lang.rust-analyzer
-    ] ++ ext;
+      github.copilot
+    ];
   };
-
 }
