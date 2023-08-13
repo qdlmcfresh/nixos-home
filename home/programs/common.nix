@@ -22,9 +22,6 @@
     #browser
     firefox
 
-    #rust
-    rustc
-    cargo
     gcc
     pkg-config
     openssl
