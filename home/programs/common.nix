@@ -47,5 +47,6 @@
         set number relativenumber
       '';
     };
+    ssh.forwardAgent = true;
   };
 }
