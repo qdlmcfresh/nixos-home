@@ -48,5 +48,10 @@
       '';
     };
     ssh.forwardAgent = true;
+    git = {
+      enable = true;
+      userName = "qdlmcfresh";
+      userEmail = "qdlmcfresh@gmail.com";
+    };
   };
 }
