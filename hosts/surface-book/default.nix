@@ -2,7 +2,7 @@
 
 {
   imports = [
-    "${builtins.fetchGit { url = "https://github.com/leonm1/nixos-hardware.git"; }}/microsoft/surface/common"
+    #"${builtins.fetchGit { url = "https://github.com/leonm1/nixos-hardware.git"; }}/microsoft/surface/common"
     ../../modules/system.nix
     ../../modules/i3.nix
     ./hardware-configuration.nix
