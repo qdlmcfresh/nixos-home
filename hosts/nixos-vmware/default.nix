@@ -22,4 +22,5 @@
   system.stateVersion = "23.05";
   virtualisation.vmware.guest.enable = true;
   sound.enable = true;
+  nix.settings.trusted-users = [ "nixremote" ]; 
 }
