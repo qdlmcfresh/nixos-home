@@ -39,8 +39,7 @@
     };
 
     # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "";
+    layout = "de(us)";
   };
 
 }
