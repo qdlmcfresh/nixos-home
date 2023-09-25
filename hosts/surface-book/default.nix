@@ -42,8 +42,12 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
+    xorg.xf86videointel
     xorg.xbacklight
   ];
+  environment.variables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
 
   microsoft-surface.surface-control.enable = true;
 

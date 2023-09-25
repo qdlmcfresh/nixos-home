@@ -32,6 +32,14 @@ format = " $percentage $icon " #{$time |}
 missing_format = ""
 
 [[block]]
+block = "backlight"
+device = "intel_backlight"
+
+[[block]]
+block = "sound"
+step_width = 3
+
+[[block]]
 block = "time"
 interval = 5
 format = " $timestamp.datetime(f:'%a %d/%m %R') "
