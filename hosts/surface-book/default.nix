@@ -13,6 +13,7 @@
 
   networking.hostName = "sb2";
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false;
 
   system.stateVersion = "23.05";
 
