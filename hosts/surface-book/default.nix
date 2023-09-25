@@ -8,7 +8,11 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    consoleMode = "auto";
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "sb2";
