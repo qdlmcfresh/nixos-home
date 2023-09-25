@@ -112,6 +112,21 @@
         "type": "github"
       }
     },
+    "leonm1-hardware": {
+      "locked": {
+        "lastModified": 1694086641,
+        "narHash": "sha256-Fz4hMwuuhRiIZFKLcm1oK+20YzBPchLa9eXmM1ZG+6U=",
+        "owner": "leonm1",
+        "repo": "nixos-hardware",
+        "rev": "9aa623db17afcc38574a4a94e0e8c12fbd04d45b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leonm1",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nix-vscode-extensions": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -134,15 +149,16 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1694086641,
-        "narHash": "sha256-Fz4hMwuuhRiIZFKLcm1oK+20YzBPchLa9eXmM1ZG+6U=",
-        "owner": "leonm1",
+        "lastModified": 1695541019,
+        "narHash": "sha256-rs++zfk41K9ArWkDAlmBDlGlKO8qeRIRzdjo+9SmNFI=",
+        "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "9aa623db17afcc38574a4a94e0e8c12fbd04d45b",
+        "rev": "61283b30d11f27d5b76439d43f20d0c0c8ff5296",
         "type": "github"
       },
       "original": {
-        "owner": "leonm1",
+        "owner": "NixOS",
+        "ref": "master",
         "repo": "nixos-hardware",
         "type": "github"
       }
@@ -199,6 +215,7 @@
       "inputs": {
         "bw-key": "bw-key",
         "home-manager": "home-manager",
+        "leonm1-hardware": "leonm1-hardware",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3"
