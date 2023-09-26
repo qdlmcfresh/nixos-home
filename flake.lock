@@ -22,6 +22,26 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1695660337,
+        "narHash": "sha256-4ceXFNIUphgqFo4BR0bUEKh65Lud4x5DF/mB/eDdqEI=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "fbfd7567c224134b57ee64a663e95285fe7fe048",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -214,6 +234,7 @@
     "root": {
       "inputs": {
         "bw-key": "bw-key",
+        "disko": "disko",
         "home-manager": "home-manager",
         "leonm1-hardware": "leonm1-hardware",
         "nix-vscode-extensions": "nix-vscode-extensions",
