@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
 
 {
-
   imports = [
-    ../home/programs/shell.nix
-    ../home/programs/rust.nix
-    ../home/programs/common.nix
+    ./programs
   ];
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {

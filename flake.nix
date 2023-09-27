@@ -29,7 +29,7 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = inputs;
-              home-manager.users.qdl = import ./home;
+              home-manager.users.qdl = import ./home/graphical;
             }
           ];
         };
@@ -45,7 +45,7 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = inputs;
-              home-manager.users.qdl = import ./home;
+              home-manager.users.qdl = import ./home/graphical;
             }
           ];
         };
@@ -61,7 +61,7 @@
                 home-manager.useUserPackages = true;
 
                 home-manager.extraSpecialArgs = inputs;
-                home-manager.users.qdl = import ./headless-home;
+                home-manager.users.qdl = import ./home/headless;
               }
             ];
           };
