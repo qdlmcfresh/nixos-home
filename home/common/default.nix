@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
 
 {
-
   imports = [
     ./programs
-    ./i3
-    ./i3status-rust
   ];
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {

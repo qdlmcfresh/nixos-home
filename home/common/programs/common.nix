@@ -19,9 +19,6 @@
 
     nixpkgs-fmt
 
-    #browser
-    firefox
-
     gcc
     pkg-config
     openssl
@@ -32,9 +29,6 @@
   ];
 
   programs = {
-    kitty = {
-      enable = true;
-    };
     tmux = {
       enable = true;
       clock24 = true;

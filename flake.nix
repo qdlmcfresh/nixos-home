@@ -13,8 +13,10 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     bw-key.url = "github:qdlmcfresh/bw-key";
     bw-key.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, disko, ... }:
     {
       nixosConfigurations = {
         nixos-vmware = nixpkgs.lib.nixosSystem {
@@ -27,7 +29,7 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = inputs;
-              home-manager.users.qdl = import ./home;
+              home-manager.users.qdl = import ./home/graphical;
             }
           ];
         };
@@ -43,10 +45,26 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = inputs;
-              home-manager.users.qdl = import ./home;
+              home-manager.users.qdl = import ./home/graphical;
             }
           ];
         };
+        fuji-server = nixpkgs.lib.nixosSystem
+          {
+            system = "x86_64-linux";
+            modules = [
+              disko.nixosModules.disko
+              ./hosts/fuji-server
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+
+                home-manager.extraSpecialArgs = inputs;
+                home-manager.users.qdl = import ./home/headless;
+              }
+            ];
+          };
       };
     };
 }
