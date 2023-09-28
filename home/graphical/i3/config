@@ -87,6 +87,7 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #################                           Shortcuts                                               #################
 #####################################################################################################################
 bindsym $mod+shift+w exec --no-startup-id nitrogen --set-scaled --random
+bindsym $mod+Return exec --no-startup-id kitty;focus
 
 #####################################################################################################################
 #################                                Rofi                                               #################
