@@ -59,47 +59,6 @@ set $right semicolon
 #################                          Single and Dual screen                                   #################
 #####################################################################################################################
 
-
-# setting variables for later use
-# use xrandr and/or arandr to know the names of your monitors
-# use this line to tell which monitor is on the right
-# xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
-#exec --no-startup-id xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
-#exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0 --auto
-#exec --no-startup-id xrandr --output DVI-1 --right-of DVI-0 --auto
-#exec --no-startup-id xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
-exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
-
-
-# my current setup
-
-#set $firstMonitor DP3
-#set $secondMonitor LVDS1
-
-#set $firstMonitor DVI-I-0
-#set $secondMonitor HDMI-0
-
-
-#set $firstMonitor DVI-0
-#set $secondMonitor DVI-1
-
-#set $firstMonitor DVI-I-1
-#set $secondMonitor DVI-D-1
-
-set $firstMonitor HDMI1
-set $secondMonitor HDMI2
-
-workspace 1 output $firstMonitor
-workspace 2 output $firstMonitor
-workspace 3 output $firstMonitor
-workspace 4 output $firstMonitor
-workspace 5 output $firstMonitor
-workspace 6 output $secondMonitor
-workspace 7 output $secondMonitor
-workspace 8 output $secondMonitor
-workspace 9 output $secondMonitor
-workspace 10 output $secondMonitor
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -127,7 +86,7 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 
 
 #####################################################################################################################
-#################                          3 menu's in arcolinux                                     #################
+#################                                Rofi                                               #################
 #####################################################################################################################
 # start rofi full
 bindsym $mod+d exec --no-startup-id rofi -show run -font "Hack 13"
@@ -322,264 +281,22 @@ mode "resize" {
 font pango:Noto Mono Regular 13
 
 
-
-
-
-#####################################################################################################################
-#################                          assign applications to workspaces                       #################
-#####################################################################################################################
-
-# Assign application to start on a specific workspace
-# you can find the class with the program xprop
-
-# Workspace 1 browser related
-#assign [class="Firefox|Vivaldi-stable|Vivaldi-snapshot|Opera"]                      → 1
-#assign [class="Chromium|Google-chrome"]                                             → 1
-
-# Workspace 2 text editor related
-#assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 2
-#assign [class="Xed|xed|Brackets|Atom|Code|Geany"]                                   → 2
-
-# Workspace 3 Inkscape
-#assign [class="Inkscape"]                                                           → 3
-
-# Workspace 4 Gimp
-#assign [class="Gimp"]                                                               → 4
-
-# Workspace 5 Images and meld
-#assign [class="ristretto|Ristretto|shotwell|Shotwell|Xviewer|Nitrogen"]             → 5
-#assign [class="feh|gthumb|Gthumb|eog|Eog|Pinta|pixeluvo|Pixeluvo"]                  → 5
-#assign [class="Meld"]                                                               → 5
-
-# Workspace 6 all video related software
-#assign [class="Vlc|vlc"]                                                            → 6
-
-# Workspace 7 virtual machines and settings
-#assign [class="Vmplayer|VirtualBox"]						    → 7
-
-# Workspace 8 file managers
-#assign [class="Nemo|Thunar|Caja|nautilus|Nautilus"]                                 → 8
-
-# Workspace 9 email clients
-#assign [class="Geary|Evolution"]                                                    → 9
-
-# Workspace 10 music related
-#assign [class="Spotify|spotify"]                                                    → 10
-#fix for spotify not moving to workspace 10
-#for_window [class="Spotify"] move to workspace 10
-
-
-
-
 #####################################################################################################################
 #################           autostart   -    execute applications at boot time                      #################
 #####################################################################################################################
-
-# USER APPLICATIONS TO START AT BOOT
-
-# ArcoLinux Welcome App
-exec --no-startup-id dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
-
-# Autotiling
-exec_always --no-startup-id autotiling
-
-#browser
-#exec --no-startup-id vivaldi-stable
-for_window [class="Vivaldi-stable"] focus
-
-#text-editor
-#exec --no-startup-id geany
-#exec --no-startup-id atom
-
-#file manager
-#exec --no-startup-id thunar
-
-#Mail clients
-#exec --no-startup-id evolution
-
-#Music
-#exec --no-startup-id spotify
-for_window [class="Spotify"] focus
-
-
+# wallpaper
+exec --no-startup-id nitrogen --set-scale --random
 
 # TRAY APPLICATIONS
 
 # applications that are not installed will not start
 # you may see a wheel - hashtag out things you do not want
 
-#Authentication dialog
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-# Updater
-exec --no-startup-id pamac-tray
-
 # bluetooth
 #exec --no-startup-id blueberry-tray
 
 # network
 exec --no-startup-id nm-applet
-
-# num lock activated
-exec_always --no-startup-id numlockx on
-
-# dropbox
-#exec --no-startup-id dropbox start
-
-# insync
-#exec --no-startup-id insync start
-
-# volume
-#exec --no-startup-id pasystray
-exec --no-startup-id volumeicon
-
-#variety
-#exec --no-startup-id variety
-
-# clipman
-#exec --no-startup-id xfce4-clipman
-
-#Conky
-#exec_always --no-startup-id killall conky; conky -c ~/.config/i3/system-overview
-
-#feh sets wallpaper
-exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
-
-#Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
-
-#####################################################################################################################
-#################                                 system applications                               #################
-#####################################################################################################################
-
-exec --no-startup-id xfce4-power-manager &
-# ommitted next line to get super key to bring up the menu in xfce and avoid error then in i3
-# IF xfsettingsd is activated you can not change themes
-#exec --no-startup-id xfsettingsd &
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
-
-#####################################################################################################################
-#################                          applications keyboard shortcuts                          #################
-#####################################################################################################################
-
-#not workspace related
-
-#ArcoLinux Welcome App
-bindsym control+$alt+w exec --no-startup-id arcolinux-welcome-app
-
-#ArcoLinux Tweak Tool
-bindsym control+$alt+e exec --no-startup-id arcolinux-tweak-tool
-
-#conky
-bindsym $mod+c exec --no-startup-id conky-toggle
-bindsym control+$alt+Next exec --no-startup-id conky-rotate -n
-bindsym control+$alt+Prior exec --no-startup-id conky-rotate -p
-
-# terminal
-bindsym $mod+Return exec --no-startup-id kitty;focus
-bindsym $mod+KP_Enter exec --no-startup-id termite;focus
-bindsym control+$alt+t exec --no-startup-id termite; focus
-bindsym control+$alt+Return exec --no-startup-id termite; focus
-bindsym control+$alt+KP_Enter exec --no-startup-id termite; focus
-bindsym F12 exec --no-startup-id xfce4-terminal --drop-down; focus
-
-#System monitor
-bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
-
-#settings
-bindsym control+$alt+m exec --no-startup-id xfce4-settings-manager
-
-#catfish
-bindsym control+$alt+c exec --no-startup-id catfish;focus
-
-#arcolinux-logout
-bindsym control+$alt+k exec --no-startup-id arcolinux-logout
-bindsym control+$alt+l exec --no-startup-id arcolinux-logout
-
-#rofi theme selector
-bindsym control+$alt+r exec --no-startup-id rofi-theme-selector
-
-#arcolinux conflict
-#bindsym $mod+m exec --no-startup-id pragha;focus
-
-#htop
-#arcolinux conflict
-#bindsym $mod+h exec --no-startup-id htop;focus
-
-#pavucontrol
-#arcolinux conflict
-bindsym control+$alt+u exec --no-startup-id pavucontrol
-
-# start xfce-appfinder
-#arcolinux does not seem to work
-bindsym control+$alt+a exec --no-startup-id xfce4-appfinder
-
-#pamac-manager
-bindsym control+$alt+p exec --no-startup-id pamac-manager
-
-#xkill
-bindsym --release $mod+Escape exec xkill
-
-#workspace related
-
-#workspace 1 related
-bindsym $mod+F1 exec --no-startup-id exo-open --launch webbrowser;focus
-#qwerty/azerty conflict with w
-bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
-bindsym control+$alt+f exec --no-startup-id firefox;focus
-bindsym control+$alt+v exec --no-startup-id vivaldi-stable;focus
-bindsym control+$alt+g exec --no-startup-id chromium;focus
-
-#workspace 2 related
-#bindsym $mod+F2 exec --no-startup-id geany;focus
-#bindsym $mod+F2 exec --no-startup-id atom;focus
-
-#workspace 3 related
-#bindsym $mod+F3 exec --no-startup-id inkscape;focus
-
-#workspace 4 related
-bindsym $mod+F4 exec --no-startup-id gimp;focus
-
-#workspace 5 related
-bindsym $mod+F5 exec --no-startup-id meld;focus
-bindsym control+$alt+i exec --no-startup-id nitrogen;focus
-
-#workspace 6 related
-bindsym $mod+F6 exec --no-startup-id vlc;focus
-
-#workspace 7 related
-bindsym $mod+F7 exec --no-startup-id virtualbox;focus
-
-#workspace 8 related
-for_window [class="Thunar"] focus
-bindsym $mod+F8 exec --no-startup-id thunar;focus
-bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
-bindsym $mod+Shift+KP_Enter exec --no-startup-id thunar;focus
-bindsym control+$alt+b exec --no-startup-id thunar;focus
-
-#workspace 9 related
-bindsym $mod+F9 exec --no-startup-id evolution;focus
-#bindsym $mod+F9 exec --no-startup-id geary;focus
-#bindsym control+$alt+e exec --no-startup-id geary;focus
-
-#workspace 10 related
-bindsym $mod+F10 exec --no-startup-id spotify;focus
-bindsym control+$alt+s exec --no-startup-id spotify;focus
-
-
-
-
-#####################################################################################################################
-#################                          screenshots                                              #################
-#####################################################################################################################
-
-
-bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-bindsym Control+Print exec --no-startup-id xfce4-screenshooter
-bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
-#bindsym shift+Print exec --no-startup-id shutter
-
-
 
 
 
@@ -636,60 +353,6 @@ for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 
 
-
-
-
-
-#####################################################################################################################
-#################                          give focus to applications                               #################
-#####################################################################################################################
-
-
-for_window [class="Gnome-terminal"] focus
-for_window [class="Termite"] focus
-for_window [class="Terminator"] focus
-
-
-
-
-
-
-#####################################################################################################################
-#################                          variety for your wallpapers                              #################
-#####################################################################################################################
-
-
-#Variety keybindings $alt = ALT
-# trash wallpaper
-#bindsym $mod+t exec --no-startup-id variety -t
-# next wallpaper
-#bindsym $mod+n exec --no-startup-id variety -n
-#bindsym $mod+Right exec --no-startup-id variety -n
-# previous wallpaper
-#bindsym $mod+p exec --no-startup-id variety -p
-#bindsym $mod+Left exec --no-startup-id variety -p
-# favorite wallpaper
-#bindsym $mod+f exec --no-startup-id variety -f
-# pause wallpaper
-#bindsym $mod+Up exec --no-startup-id variety --pause
-# resume wallpaper
-#bindsym $mod+Down exec --no-startup-id variety --resume
-
-
-#####################################################################################################################
-#################                          variety with pywal for your wallpapers                   #################
-#####################################################################################################################
-
-# next wallpaper
-bindsym $alt+Shift+n exec --no-startup-id variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-# previous wallpaper
-bindsym $alt+Shift+p exec --no-startup-id variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-# trash wallpaper
-bindsym $alt+Shift+t exec --no-startup-id variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-# Update Wallpaper
-bindsym $alt+Shift+u exec --no-startup-id wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
-
-
 #####################################################################################################################
 #################                          audio settings                                           #################
 #####################################################################################################################
@@ -715,16 +378,6 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
-
-
-
-#####################################################################################################################
-#################                          bar toggle                                               #################
-#####################################################################################################################
-
-
-# bar toggle, hide or show
-bindsym $mod+b bar mode toggle
 
 
 #####################################################################################################################
