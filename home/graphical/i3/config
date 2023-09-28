@@ -289,7 +289,7 @@ font pango:Noto Mono Regular 13
 #################           autostart   -    execute applications at boot time                      #################
 #####################################################################################################################
 # wallpaper
-exec --no-startup-id nitrogen --set-scaled --random
+exec --no-startup-id python /home/qdl/.config/i3/set_background.py
 
 # TRAY APPLICATIONS
 
