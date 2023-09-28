@@ -285,7 +285,7 @@ font pango:Noto Mono Regular 13
 #################           autostart   -    execute applications at boot time                      #################
 #####################################################################################################################
 # wallpaper
-exec --no-startup-id nitrogen --set-scale --random
+exec --no-startup-id nitrogen --set-scaled --random
 
 # TRAY APPLICATIONS
 
