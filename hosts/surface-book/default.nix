@@ -39,6 +39,17 @@
 
   services.xserver.dpi = 180;
   services.xserver.videoDrivers = [ "intel" ];
+
+  systemd.services.fix-power-button = {
+    description = "Fix Power Button Issue";
+    wantedBy = [ "multi-user.target" ];
+    script = ''
+      #!/bin/sh
+      /run/current-system/sw/bin/modprobe -r soc_button_array
+      /run/current-system/sw/bin/modprobe soc_button_array
+    '';
+  };
+
   environment.variables = {
     GDK_SCALE = "2";
     GDK_DPI_SCALE = "0.5";
