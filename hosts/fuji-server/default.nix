@@ -65,6 +65,7 @@
   users.users.smb = {
     isNormalUser = true;
     home = "/home/smb";
+    homeMode = "777";
   };
 
   users.users.root.openssh.authorizedKeys.keys = [
