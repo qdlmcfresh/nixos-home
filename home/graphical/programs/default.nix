@@ -9,5 +9,8 @@
     ./terminal.nix
     ./browser.nix
   ];
+  home.packages = with pkgs; [
+    remmina # remote desktop client
+  ];
 }
 
