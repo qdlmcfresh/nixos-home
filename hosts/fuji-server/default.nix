@@ -26,9 +26,11 @@
         5357 # wsdd
         28981 # paperless
         80 # nginx
+        53 # dns
       ];
       allowedUDPPorts = [
         3702 # wsdd
+        53 # dns
       ];
     };
   };
@@ -86,6 +88,22 @@
             proxyWebsockets = true;
           };
         };
+        virtualHosts."paperless.lan" = {
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:28981";
+            proxyWebsockets = true;
+          };
+        };
+        virtualHosts."adguard.lan" = {
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:3000";
+            proxyWebsockets = true;
+          };
+        };
+      };
+      adguardhome = {
+        enable = true;
+        openFirewall = true;
       };
     };
 
