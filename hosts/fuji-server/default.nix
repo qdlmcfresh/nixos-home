@@ -24,6 +24,8 @@
       allowedTCPPorts = [
         22 # ssh
         5357 # wsdd
+        28981 # paperless
+        80 # nginx
       ];
       allowedUDPPorts = [
         3702 # wsdd
@@ -57,6 +59,31 @@
             "guest ok" = "yes";
             "create mask" = "0644";
             "directory mask" = "0755";
+          };
+        };
+      };
+      paperless = {
+        enable = true;
+        consumptionDir = "/home/smb/scans";
+        consumptionDirIsPublic = true;
+        address = "127.0.0.1";
+        extraConfig = {
+          PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
+          PAPERLESS_OCR_LANGUAGE = "deu+eng";
+          PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
+          PAPERLESS_STATIC_URL = "/paperless/static/";
+          PAPERLESS_USE_X_FORWARD_HOST = "true";
+          PAPERLESS_USE_X_FORWARD_PORT = "true";
+          PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD = "7";
+        };
+      };
+      nginx = {
+        enable = true;
+        recommendedProxySettings = true;
+        virtualHosts."fuji-server.fritz.box" = {
+          locations."/paperless" = {
+            proxyPass = "http://127.0.0.1:28981";
+            proxyWebsockets = true;
           };
         };
       };
