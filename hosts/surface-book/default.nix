@@ -90,9 +90,14 @@
       turbo = "auto";
     };
   };
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=suspend-then-hibernate
+  '';
   powerManagement.powertop.enable = true;
 
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=30m
   '';
+
 }
