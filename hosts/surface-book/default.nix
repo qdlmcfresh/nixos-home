@@ -79,7 +79,25 @@
 
   services.upower.enable = true;
 
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=suspend-then-hibernate
+  '';
+  powerManagement.powertop.enable = true;
+
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=30m
   '';
+
 }
