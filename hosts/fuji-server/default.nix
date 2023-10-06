@@ -106,7 +106,7 @@
         openFirewall = true;
       };
     };
-
+  powerManagement.powertop.enable = true;
   users.users.smb = {
     isNormalUser = true;
     home = "/home/smb";
