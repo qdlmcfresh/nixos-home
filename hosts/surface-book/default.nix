@@ -77,6 +77,10 @@
     pulse.enable = true;
   };
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+
   services.upower.enable = true;
 
   services.auto-cpufreq.enable = true;
