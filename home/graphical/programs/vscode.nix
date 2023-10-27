@@ -25,6 +25,8 @@
       "files.trimTrailingWhitespace" = true;
       "editor.minimap.enabled" = false;
       "workbench.editor.enablePreview" = false;
+      "update.mode" = "none";
+      "platformio-ide.useBuiltinPIOCore" = false;
     };
     extensions = with nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
       espressif.esp-idf-extension
