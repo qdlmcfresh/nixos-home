@@ -61,9 +61,8 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-
   services.upower.enable = true;
-
+  powerManagement.powertop.enable = true;
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
