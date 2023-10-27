@@ -16,7 +16,7 @@
 
     # cloud native
     docker-compose
-
+    distrobox
     nixpkgs-fmt
 
     gcc
