@@ -37,6 +37,7 @@
         xbindkeys # bind keys to commands
         sysstat # get system information
         nitrogen # set wallpaper
+        xdg-desktop-portal-gtk
       ];
     };
 
