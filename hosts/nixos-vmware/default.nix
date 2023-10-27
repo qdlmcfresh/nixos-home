@@ -25,4 +25,11 @@
   virtualisation.docker.enable = true;
   sound.enable = true;
   nix.settings.trusted-users = [ "nixremote" ];
+  environment.systemPackages = with pkgs; [
+    platformio
+  ];
+  services.udev.packages = [
+    pkgs.platformio
+    pkgs.openocd
+  ];
 }
