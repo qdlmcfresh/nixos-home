@@ -36,8 +36,6 @@
 
   services.printing.enable = true;
 
-  services.xserver.videoDrivers = [ "intel" ];
-
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     xorg.xf86videointel
