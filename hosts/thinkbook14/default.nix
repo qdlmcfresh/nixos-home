@@ -47,8 +47,21 @@
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
-
   sound.enable = true;
+
+  hardware = {
+    opengl.enable = true;
+    opengl.driSupport = true;
+    opengl.driSupport32Bit = true;
+
+    opengl.extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+    bluetooth.enable = true;
+  };
+
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -58,7 +71,7 @@
     pulse.enable = true;
   };
 
-  hardware.bluetooth.enable = true;
+
   services.blueman.enable = true;
 
   services.upower.enable = true;
