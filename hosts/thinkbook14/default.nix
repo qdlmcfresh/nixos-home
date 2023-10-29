@@ -51,6 +51,8 @@
   };
   sound.enable = true;
 
+  virtualisation.docker.enable = true;
+
   hardware = {
     opengl.enable = true;
     opengl.driSupport = true;
