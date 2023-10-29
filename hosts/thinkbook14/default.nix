@@ -42,6 +42,9 @@
     xorg.xf86videointel
     xorg.xbacklight
   ];
+  services.fprintd = {
+    enable = true;
+  };
 
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
