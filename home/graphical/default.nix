@@ -9,7 +9,6 @@
     ./i3status-rust
   ];
 
-  users.users.qdl.extraGroups = [ "libvirtd" ];
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];

@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  users.users.qdl.extraGroups = [ "libvirtd" ];
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [
     virt-manager
