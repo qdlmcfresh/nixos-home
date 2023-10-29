@@ -4,6 +4,7 @@
   imports = [
     ../../modules/system.nix
     ../../modules/i3.nix
+    ../../modules/virt.nix
     ./hardware-configuration.nix
   ];
 
