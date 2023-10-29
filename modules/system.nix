@@ -51,6 +51,8 @@
     neofetch
     pavucontrol
     python3
+    pciutils
+    usbutils
   ];
 
   security.polkit.enable = true;
@@ -62,7 +64,7 @@
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };

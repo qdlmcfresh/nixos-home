@@ -49,22 +49,37 @@
             }
           ];
         };
-        fuji-server = nixpkgs.lib.nixosSystem
-          {
-            system = "x86_64-linux";
-            modules = [
-              disko.nixosModules.disko
-              ./hosts/fuji-server
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
+        fuji-server = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/fuji-server
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-                home-manager.extraSpecialArgs = inputs;
-                home-manager.users.qdl = import ./home/headless;
-              }
-            ];
-          };
+              home-manager.extraSpecialArgs = inputs;
+              home-manager.users.qdl = import ./home/headless;
+            }
+          ];
+        };
+        thinkbook14 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+            nixos-hardware.nixosModules.common-cpu-intel
+            ./hosts/thinkbook14
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = inputs;
+              home-manager.users.qdl = import ./home/graphical;
+            }
+          ];
+        };
       };
     };
 }
