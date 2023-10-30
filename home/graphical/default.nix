@@ -7,6 +7,7 @@
     ./programs
     ./i3
     ./i3status-rust
+    ./sway
   ];
 
   dconf.settings = {
