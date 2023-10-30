@@ -119,11 +119,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698392685,
-        "narHash": "sha256-yx/sbRneR2AfSAeAMqUu0hoVJdjh+qhl/7dkirp8yo8=",
+        "lastModified": 1698670511,
+        "narHash": "sha256-jQIu3UhBMPHXzVkHQO1O2gg8SVo5lqAVoC6mOaLQcLQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1369d2cefb6f128c30e42fabcdebbacc07e18b3f",
+        "rev": "8e5416b478e465985eec274bc3a018024435c106",
         "type": "github"
       },
       "original": {
@@ -154,11 +154,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1698369553,
-        "narHash": "sha256-UydAsFdCNXvC0nkkMWsAb1nfAp4MoPdLVfQ9AY8hAis=",
+        "lastModified": 1698628736,
+        "narHash": "sha256-ua0xK8rzo6g07ZzSMmhGGzaESaxIxq6rfgWyTwXQBKY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "d6e6e8417d54edca269d4351c6dc1fd4e4b163c1",
+        "rev": "6dabe9a8649863bff07d65829ab6f09ac2cf1aba",
         "type": "github"
       },
       "original": {
@@ -231,6 +231,21 @@
         "type": "github"
       }
     },
+    "qdlpkgs": {
+      "locked": {
+        "lastModified": 1698685519,
+        "narHash": "sha256-GwuzzFmC8QUSAeYsUrzxa8Uuu1f73LyrciNcRAK8Ffw=",
+        "owner": "qdlmcfresh",
+        "repo": "nixpkgs",
+        "rev": "860334ae29b7822456f9b40bca4a256802185bfc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qdlmcfresh",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "bw-key": "bw-key",
@@ -239,7 +254,8 @@
         "leonm1-hardware": "leonm1-hardware",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "qdlpkgs": "qdlpkgs"
       }
     },
     "rust-overlay": {
