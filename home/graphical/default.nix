@@ -8,6 +8,7 @@
     ./i3
     ./i3status-rust
     ./sway
+    ./theming
   ];
 
   dconf.settings = {
