@@ -35,7 +35,7 @@
       package = pkgs.papirus-icon-theme;
     };
     font = {
-      name = "FiraCode Nerd Font Mono Medium";
+      name = "Hack";
     };
   };
 }
