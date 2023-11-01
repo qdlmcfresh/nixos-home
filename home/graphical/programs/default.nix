@@ -14,6 +14,7 @@
     zoom-us # video conferencing
     pcmanfm # file manager
     thunderbird # email client
+    discord
   ];
 }
 
