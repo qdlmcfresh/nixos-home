@@ -6,5 +6,6 @@
     brightnessctl
     swaybg
     wmname
+    wdisplays
   ];
 }
