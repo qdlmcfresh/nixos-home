@@ -63,8 +63,8 @@
       export XDG_SESSION_DESKTOP=sway
       export XDG_CURRENT_DESKTOP=sway
       export _JAVA_AWT_WM_NONREPARENTING=1
-      wmname LG3D
-    '';
+
+    ''; #      wmname LG3D
     # wmname is needed for Java Swing applications
   };
   programs = {
