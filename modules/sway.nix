@@ -7,5 +7,6 @@
     swaybg
     wmname
     wdisplays
+    wl-mirror
   ];
 }
