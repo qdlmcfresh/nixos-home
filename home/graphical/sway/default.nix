@@ -12,7 +12,13 @@
         "Virtual-1" = {
           mode = "1920x1200@60Hz";
         };
+
       };
+      startup = [
+        { command = "systemctl --user restart waybar"; always = true; }
+        { command = "swaync"; }
+        { command = "wmname LG3D"; }
+      ];
       keybindings =
         let modifier = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
@@ -63,10 +69,10 @@
       export XDG_SESSION_DESKTOP=sway
       export XDG_CURRENT_DESKTOP=sway
       export _JAVA_AWT_WM_NONREPARENTING=1
-
     ''; #      wmname LG3D
     # wmname is needed for Java Swing applications
   };
+  home.file.".config/waybar/config".source = ./waybar_config;
   programs = {
     swaylock = {
       enable = true;
@@ -76,6 +82,15 @@
     };
     wofi = {
       enable = true;
+    };
+  };
+  services = {
+    swayidle = {
+      enable = true;
+      systemdTarget = "sway-session.target";
+      timeouts = [
+        { timeout = 120; command = "systemctl suspend"; }
+      ];
     };
   };
 }

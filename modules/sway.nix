@@ -8,5 +8,7 @@
     wmname
     wdisplays
     wl-mirror
+    swaynotificationcenter
+    swayidle
   ];
 }
