@@ -12,6 +12,9 @@
   home.packages = with pkgs; [
     remmina # remote desktop client
     zoom-us # video conferencing
+    pcmanfm # file manager
+    thunderbird # email client
+    discord
   ];
 }
 
