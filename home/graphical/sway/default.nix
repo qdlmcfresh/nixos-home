@@ -27,6 +27,7 @@
           "${modifier}+Shift+q" = "kill";
           "${modifier}+Shift+e" = "mode exit";
           "${modifier}+Shift+r" = "reload";
+          "${modifier}+Shift+s" = "exec wayshot -s \"$(slurp)\" --stdout | wl-copy";
           "XF86AudioRaiseVolume" = "exec amixer sset Master '5%+'";
           "XF86AudioLowerVolume" = "exec amixer sset Master '5%-'";
           "XF86AudioMute" = "exec amixer set Master toggle";

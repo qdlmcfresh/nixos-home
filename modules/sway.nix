@@ -10,5 +10,8 @@
     wl-mirror
     swaynotificationcenter
     swayidle
+    slurp
+    wayshot
+    wl-clipboard
   ];
 }
