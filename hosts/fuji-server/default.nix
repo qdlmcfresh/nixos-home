@@ -106,6 +106,22 @@
         openFirewall = true;
       };
     };
+  systemd.services.vaultwarden_backup = {
+    description = "Rsync backup service";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.rsync}/bin/rsync -avz -e vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
+    };
+  };
+  systemd.timers.vaultwarden_backup = {
+    description = "Rsync backup timer";
+    timerConfig = {
+      OnCalendar = "06:00";
+      Unit = "vaultwarden_backup.service";
+    };
+    enable = true;
+  };
   powerManagement.powertop.enable = true;
   users.users.smb = {
     isNormalUser = true;
