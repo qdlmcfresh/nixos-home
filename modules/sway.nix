@@ -13,5 +13,6 @@
     slurp
     wayshot
     wl-clipboard
+    wayvnc
   ];
 }
