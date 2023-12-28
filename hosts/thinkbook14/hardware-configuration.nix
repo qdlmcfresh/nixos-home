@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -14,12 +15,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f8a2bb09-68bd-45ce-beda-1c21fe82fc30";
+    {
+      device = "/dev/disk/by-uuid/f8a2bb09-68bd-45ce-beda-1c21fe82fc30";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/175B-C9A9";
+    {
+      device = "/dev/disk/by-uuid/175B-C9A9";
       fsType = "vfat";
     };
 
@@ -36,4 +39,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  networking.firewall.checkReversePath = false; # for wireguard
+  networking.bridges.br-lan.interfaces = [ "enp0s31f6" ];
 }
