@@ -54,6 +54,7 @@
       platformio.platformio-ide
       rust-lang.rust-analyzer
       github.copilot
+      github.copilot-chat
     ];
   };
 }
