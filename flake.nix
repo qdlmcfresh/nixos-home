@@ -6,7 +6,7 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    qdlpkgs.url = "github:qdlmcfresh/nixpkgs";
+    qdlpkgs.url = "github:qdlmcfresh/nixpkgs/brother_mfc_L5750DW";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     leonm1-hardware.url = "github:leonm1/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
@@ -30,6 +30,7 @@
       };
     in
     {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       nixosConfigurations = {
         nixos-vmware = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

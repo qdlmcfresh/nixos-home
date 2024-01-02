@@ -36,7 +36,17 @@
   }];
   nix.distributedBuilds = true;
 
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.qdl.mfcl5750dw ];
+    logLevel = "debug";
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet

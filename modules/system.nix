@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, vscode-server, ... }:
 
 
 {
@@ -64,7 +64,7 @@
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" "lp" ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
