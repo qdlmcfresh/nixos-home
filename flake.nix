@@ -16,8 +16,9 @@
     bw-key.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
-  outputs = inputs@{ self, nixpkgs, qdlpkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, disko, ... }:
+  outputs = inputs@{ self, nixpkgs, qdlpkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, disko, vscode-server, ... }:
     let
       system = "x86_64-linux";
       overlay-qdl = final: prev: {
@@ -82,6 +83,7 @@
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             ./hosts/thinkbook14
+            vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
