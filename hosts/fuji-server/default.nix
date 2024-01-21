@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/system.nix
+    ../../modules/steam-cmd.nix
   ];
 
   boot.loader = {
