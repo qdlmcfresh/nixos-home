@@ -67,6 +67,7 @@
           modules = [
             disko.nixosModules.disko
             ./hosts/fuji-server
+            vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
