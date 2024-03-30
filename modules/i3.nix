@@ -42,7 +42,7 @@
     };
 
     # Configure keymap in X11
-    layout = "de(us)";
+    xkb.layout = "de(us)";
   };
   services.xrdp.defaultWindowManager = "i3";
 
