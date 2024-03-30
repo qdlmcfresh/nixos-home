@@ -78,11 +78,101 @@
     swaylock = {
       enable = true;
     };
-    waybar = {
-      enable = true;
-    };
+    # waybar = {
+    #   enable = true;
+    # };
     wofi = {
       enable = true;
+    };
+    hyprlock = {
+      enable = true;
+      general = {
+        hide_cursor = true;
+        no_fade_in = false;
+        disable_loading_bar = true;
+        grace = 0;
+      };
+      backgrounds = [{
+        monitor = "";
+        #path = ".config/wall.png";
+        color = "rgba(25, 20, 20, 1.0)";
+        blur_passes = 1;
+        blur_size = 0;
+        brightness = 0.2;
+      }];
+      input-fields = [
+        {
+          monitor = "";
+          size = {
+            width = 250;
+            height = 60;
+          };
+          outline_thickness = 2;
+          dots_size = 0.2;
+          dots_spacing = 0.2;
+          dots_center = true;
+          outer_color = "rgba(0, 0, 0, 0)";
+          inner_color = "rgba(0, 0, 0, 0.5)";
+          font_color = "rgb(200, 200, 200)";
+          fade_on_empty = false;
+          placeholder_text = ''<i><span foreground="##cdd6f4">Input Password...</span></i>'';
+          hide_input = false;
+          position = {
+            x = 0;
+            y = -120;
+          };
+          halign = "center";
+          valign = "center";
+        }
+      ];
+      labels = [
+        {
+          monitor = "";
+          text = "$TIME";
+          font_size = 120;
+          position = {
+            x = 0;
+            y = 250;
+          };
+          valign = "center";
+          halign = "center";
+        }
+        {
+          monitor = "";
+          text = ''
+            cmd[update:1000] /run/current-system/sw/bin/echo "<span>$(/run/current-system/sw/bin/date)</span>"
+          '';
+          font_size = 40;
+          position = {
+            x = 0;
+            y = 120;
+          };
+          valign = "center";
+          halign = "center";
+        }
+        {
+          monitor = "";
+          text = "Unlock with fingerprint";
+          font_size = 20;
+          position = {
+            x = 0;
+            y = 80;
+          };
+          valign = "center";
+          halign = "center";
+        }
+        {
+          monitor = "";
+          text = "$FAIL $ATTEMPTS";
+          font_size = 20;
+          position = {
+            x = 0;
+            y = 50;
+          };
+          valign = "center";
+          halign = "center";
+        }
+      ];
     };
   };
   services = {
@@ -90,7 +180,10 @@
       enable = true;
       systemdTarget = "sway-session.target";
       timeouts = [
-        { timeout = 120; command = "systemctl suspend"; }
+        { timeout = 120; command = "/run/current-system/sw/bin/systemctl suspend"; }
+      ];
+      events = [
+        { event = "before-sleep"; command = "${pkgs.hyprlock}/bin/hyprlock"; }
       ];
     };
   };
