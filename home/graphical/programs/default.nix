@@ -15,6 +15,8 @@
     pcmanfm # file manager
     thunderbird # email client
     discord
+    nextcloud-client
+    gnome.file-roller # archive manager
   ];
 }
 
