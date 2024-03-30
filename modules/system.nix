@@ -64,7 +64,7 @@
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" "lp" "wireshark"];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
