@@ -70,6 +70,7 @@
   };
 
   services.vscode-server.enable = true;
+  services.gvfs.enable = true;
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
