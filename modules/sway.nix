@@ -14,5 +14,7 @@
     wayshot
     wl-clipboard
     wayvnc
+    stable.wireplumber
+    stable.waybar
   ];
 }
