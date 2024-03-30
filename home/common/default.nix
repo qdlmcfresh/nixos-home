@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, hyprlock, ... }:
 
 {
   imports = [
+    hyprlock.homeManagerModules.default
     ./programs
   ];
   # Home Manager needs a bit of information about you and the

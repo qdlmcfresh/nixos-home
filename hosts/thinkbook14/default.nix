@@ -42,6 +42,8 @@
     logLevel = "debug";
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -56,7 +58,7 @@
   services.fprintd = {
     enable = true;
     tod.enable = true;
-    tod.driver = pkgs.qdl.libfprint-2-tod1-elan;
+    tod.driver = pkgs.libfprint-2-tod1-elan;
   };
 
   services.xrdp.enable = true;
@@ -89,6 +91,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
 
 
@@ -107,4 +110,7 @@
       turbo = "auto";
     };
   };
+  # services.logind.lidSwitchExternalPower = "ignore";
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
 }

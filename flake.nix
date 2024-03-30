@@ -6,6 +6,7 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stablepkgs.url = "github:nixos/nixpkgs/23.11";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/brother_mfc_L5750DW";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     leonm1-hardware.url = "github:leonm1/nixos-hardware";
@@ -17,13 +18,21 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    hyprlock.url = "github:hyprwm/hyprlock";
   };
-  outputs = inputs@{ self, nixpkgs, qdlpkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, disko, vscode-server, ... }:
+  outputs = inputs@{ self, nixpkgs, qdlpkgs, stablepkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, disko, vscode-server, hyprlock, ... }:
     let
       system = "x86_64-linux";
       overlay-qdl = final: prev: {
         # use this variant if unfree packages are needed:
         qdl = import qdlpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+      overlay-stable = final: prev: {
+        # use this variant if unfree packages are needed:
+        stable = import stablepkgs {
           inherit system;
           config.allowUnfree = true;
         };
@@ -81,7 +90,7 @@
         thinkbook14 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-qdl ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-qdl overlay-stable ]; })
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             ./hosts/thinkbook14

@@ -29,7 +29,6 @@
       "platformio-ide.useBuiltinPIOCore" = false;
     };
     extensions = with nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
-      espressif.esp-idf-extension
       jnoortheen.nix-ide
       ms-azuretools.vscode-docker
       ms-python.isort
@@ -44,14 +43,9 @@
       ms-vscode-remote.remote-ssh
       ms-vscode-remote.remote-ssh-edit
       ms-vscode-remote.vscode-remote-extensionpack
-      ms-vscode.cmake-tools
-      ms-vscode.cpptools
-      ms-vscode.cpptools-extension-pack
-      ms-vscode.cpptools-themes
       ms-vscode.remote-explorer
       ms-vscode.remote-server
       pinage404.nix-extension-pack
-      platformio.platformio-ide
       rust-lang.rust-analyzer
       github.copilot
       github.copilot-chat

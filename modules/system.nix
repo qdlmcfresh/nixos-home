@@ -64,12 +64,13 @@
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" "lp" "wireshark"];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
 
   services.vscode-server.enable = true;
+  services.gvfs.enable = true;
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
