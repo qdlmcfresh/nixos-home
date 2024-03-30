@@ -108,6 +108,9 @@
         enable = true;
         openFirewall = true;
       };
+      tailscale = {
+        enable = true;
+      };
     };
   systemd.services.vaultwarden_backup = {
     description = "Rsync backup service";
