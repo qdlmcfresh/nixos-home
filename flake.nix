@@ -6,7 +6,7 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stablepkgs.url = "github:nixos/nixpkgs/23.11";
+    stablepkgs.url = "github:leona-ya/nixpkgs/paperless-subpath";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/brother_mfc_L5750DW";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     leonm1-hardware.url = "github:leonm1/nixos-hardware";
@@ -75,6 +75,7 @@
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-qdl overlay-stable ]; })
             ./hosts/fuji-server
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
