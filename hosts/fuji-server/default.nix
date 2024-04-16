@@ -67,12 +67,14 @@
           };
         };
       };
+
       paperless = {
         enable = true;
-        consumptionDir = "/home/smb/scans";
+	package = pkgs.stable.paperless-ngx;
+	consumptionDir = "/home/smb/scans";
         consumptionDirIsPublic = true;
         address = "127.0.0.1";
-        settings = {
+        extraConfig = {
           PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
           PAPERLESS_OCR_LANGUAGE = "deu+eng";
           PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
@@ -103,6 +105,12 @@
             proxyWebsockets = true;
           };
         };
+	virtualHosts."immich.lan" = {
+	  locations."/" = {
+	    proxyPass = "http://127.0.0.1:2283";
+	    proxyWebsockets = true;
+	  };
+	};
       };
       adguardhome = {
         enable = true;
@@ -117,7 +125,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.rsync}/bin/rsync -avz -e vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
+      ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh' ubuntu@vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
     };
   };
   systemd.timers.vaultwarden_backup = {
