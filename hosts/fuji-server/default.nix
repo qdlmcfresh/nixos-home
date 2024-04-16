@@ -70,8 +70,8 @@
 
       paperless = {
         enable = true;
-	package = pkgs.stable.paperless-ngx;
-	consumptionDir = "/home/smb/scans";
+        package = pkgs.stable.paperless-ngx;
+        consumptionDir = "/home/smb/scans";
         consumptionDirIsPublic = true;
         address = "127.0.0.1";
         settings = {
