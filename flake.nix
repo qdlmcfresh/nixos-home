@@ -44,6 +44,7 @@
         nixos-vmware = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            vscode-server.nixosModules.default
             ./hosts/nixos-vmware
             home-manager.nixosModules.home-manager
             {
