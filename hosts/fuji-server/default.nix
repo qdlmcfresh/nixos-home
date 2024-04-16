@@ -74,7 +74,7 @@
 	consumptionDir = "/home/smb/scans";
         consumptionDirIsPublic = true;
         address = "127.0.0.1";
-        extraConfig = {
+        settings = {
           PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
           PAPERLESS_OCR_LANGUAGE = "deu+eng";
           PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
