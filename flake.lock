@@ -373,16 +373,16 @@
     },
     "stablepkgs": {
       "locked": {
-        "lastModified": 1701282334,
-        "narHash": "sha256-MxCVrXY6v4QmfTwIysjjaX0XUhqBbxTWWB4HXtDYsdk=",
-        "owner": "nixos",
+        "lastModified": 1711320986,
+        "narHash": "sha256-kMqTeiDyfZi64sqDllyEE5pvJ89Dj1ddupWWpcawpj8=",
+        "owner": "leona-ya",
         "repo": "nixpkgs",
-        "rev": "057f9aecfb71c4437d2b27d3323df7f93c010b7e",
+        "rev": "eccde4643b8ea82e11fd45f79ff5b912a871f09c",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "23.11",
+        "owner": "leona-ya",
+        "ref": "paperless-subpath",
         "repo": "nixpkgs",
         "type": "github"
       }
