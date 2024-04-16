@@ -122,7 +122,8 @@
     };
   systemd.services.vaultwarden_backup = {
     description = "Rsync backup service";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" "network-online.target" ];
+    after = ["network-online.target"];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh' ubuntu@vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
