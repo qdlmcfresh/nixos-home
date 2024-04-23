@@ -19,8 +19,24 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     hyprlock.url = "github:hyprwm/hyprlock";
+    catppuccin.url = "github:catppuccin/nix";
   };
-  outputs = inputs@{ self, nixpkgs, qdlpkgs, stablepkgs, nixos-hardware, leonm1-hardware, home-manager, nix-vscode-extensions, bw-key, disko, vscode-server, hyprlock, ... }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , qdlpkgs
+    , stablepkgs
+    , nixos-hardware
+    , leonm1-hardware
+    , home-manager
+    , nix-vscode-extensions
+    , bw-key
+    , disko
+    , vscode-server
+    , hyprlock
+    , catppuccin
+    , ...
+    }:
     let
       system = "x86_64-linux";
       overlay-qdl = final: prev: {
@@ -103,7 +119,12 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = inputs;
-              home-manager.users.qdl = import ./home/graphical;
+              home-manager.users.qdl = {
+                imports = [
+                  ./home/graphical
+                  catppuccin.homeManagerModules.catppuccin
+                ];
+              };
             }
           ];
         };

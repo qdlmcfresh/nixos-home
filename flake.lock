@@ -22,6 +22,21 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1713831606,
+        "narHash": "sha256-QZF+A3r8aDsZFhRYcmbFBFDQMVTG5gTX2Q7GVKQ7sQw=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "cc89781d13834e0207ec6fb50ccb2d5122b274c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -340,6 +355,7 @@
     "root": {
       "inputs": {
         "bw-key": "bw-key",
+        "catppuccin": "catppuccin",
         "disko": "disko",
         "home-manager": "home-manager",
         "hyprlock": "hyprlock",
