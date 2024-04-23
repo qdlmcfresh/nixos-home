@@ -45,4 +45,6 @@
   networking.bridges."br-lan".rstp = true;
   networking.interfaces."br-lan".useDHCP = true;
   networking.interfaces."wlp0s20f3".useDHCP = true;
+  boot.initrd.systemd.network.wait-online.ignoredInterfaces = [ "enp0s31f6" "br-lan" ];
+  networking.networkmanager.unmanaged = [ "br-lan" "enp0s31f6" ];
 }
