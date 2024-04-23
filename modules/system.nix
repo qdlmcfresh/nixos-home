@@ -1,5 +1,9 @@
-{ config, pkgs, vscode-server, ... }:
-
+{
+  config,
+  pkgs,
+  vscode-server,
+  ...
+}:
 
 {
   imports = [ ./ssh ];
@@ -20,7 +24,10 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
@@ -64,7 +71,17 @@
   users.users.qdl = {
     isNormalUser = true;
     description = "qdl";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "surface-control" "dialout" "input" "lp" "wireshark"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "audio"
+      "surface-control"
+      "dialout"
+      "input"
+      "lp"
+      "wireshark"
+    ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
@@ -73,8 +90,13 @@
   services.gvfs.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "DroidSansMono"
+        "Hack"
+      ];
+    })
     font-awesome
   ];
-
 }

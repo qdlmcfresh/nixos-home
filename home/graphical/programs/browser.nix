@@ -1,4 +1,5 @@
-{ pkgs, bw-key, ... }: {
+{ pkgs, bw-key, ... }:
+{
   home.packages = with pkgs; [
     firefox
     chromium

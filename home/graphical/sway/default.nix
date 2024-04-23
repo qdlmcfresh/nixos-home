@@ -1,7 +1,8 @@
-{ pkgs
-, config
-, lib
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  ...
 }:
 {
   wayland.windowManager.sway = {
@@ -12,16 +13,20 @@
         "Virtual-1" = {
           mode = "1920x1200@60Hz";
         };
-
       };
       startup = [
-        { command = "systemctl --user restart waybar"; always = true; }
+        {
+          command = "systemctl --user restart waybar";
+          always = true;
+        }
         { command = "swaync"; }
         { command = "wmname LG3D"; }
       ];
       keybindings =
-        let modifier = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
+        lib.mkOptionDefault {
           "${modifier}+Return" = "exec kitty";
           "${modifier}+d" = "exec rofi -show run -font Hack 13";
           "${modifier}+Shift+q" = "kill";
@@ -70,7 +75,7 @@
       export XDG_SESSION_DESKTOP=sway
       export XDG_CURRENT_DESKTOP=sway
       export _JAVA_AWT_WM_NONREPARENTING=1
-    ''; #      wmname LG3D
+    ''; # wmname LG3D
     # wmname is needed for Java Swing applications
   };
   home.file.".config/waybar/config".source = ./waybar_config;
@@ -92,14 +97,16 @@
         disable_loading_bar = true;
         grace = 0;
       };
-      backgrounds = [{
-        monitor = "";
-        #path = ".config/wall.png";
-        color = "rgba(25, 20, 20, 1.0)";
-        blur_passes = 1;
-        blur_size = 0;
-        brightness = 0.2;
-      }];
+      backgrounds = [
+        {
+          monitor = "";
+          #path = ".config/wall.png";
+          color = "rgba(25, 20, 20, 1.0)";
+          blur_passes = 1;
+          blur_size = 0;
+          brightness = 0.2;
+        }
+      ];
       input-fields = [
         {
           monitor = "";
@@ -180,10 +187,16 @@
       enable = true;
       systemdTarget = "sway-session.target";
       timeouts = [
-        { timeout = 120; command = "/run/current-system/sw/bin/systemctl suspend"; }
+        {
+          timeout = 120;
+          command = "/run/current-system/sw/bin/systemctl suspend";
+        }
       ];
       events = [
-        { event = "before-sleep"; command = "${pkgs.hyprlock}/bin/hyprlock"; }
+        {
+          event = "before-sleep";
+          command = "${pkgs.hyprlock}/bin/hyprlock";
+        }
       ];
     };
   };

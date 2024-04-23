@@ -2,7 +2,13 @@
 #  GTK
 #
 
-{ pkgs, catppuccin, home-manager, config, ... }:
+{
+  pkgs,
+  catppuccin,
+  home-manager,
+  config,
+  ...
+}:
 
 {
   xdg = {

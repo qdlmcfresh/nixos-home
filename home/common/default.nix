@@ -1,4 +1,9 @@
-{ config, pkgs, hyprlock, ... }:
+{
+  config,
+  pkgs,
+  hyprlock,
+  ...
+}:
 
 {
   imports = [

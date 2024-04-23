@@ -1,6 +1,5 @@
 { pkgs, ... }:
 
-
 {
 
   # i3 related options
@@ -45,5 +44,4 @@
     xkb.layout = "de(us)";
   };
   services.xrdp.defaultWindowManager = "i3";
-
 }

@@ -22,23 +22,34 @@
 
   system.stateVersion = "23.05";
 
-  nix.buildMachines = [{
-    hostName = "nixos-vmware";
-    system = "x86_64-linux";
-    protocol = "ssh-ng";
-    # if the builder supports building for multiple architectures,
-    # replace the previous line by, e.g.,
-    # systems = ["x86_64-linux" "aarch64-linux"];
-    maxJobs = 1;
-    speedFactor = 2;
-    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-    mandatoryFeatures = [ ];
-  }];
+  nix.buildMachines = [
+    {
+      hostName = "nixos-vmware";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      # if the builder supports building for multiple architectures,
+      # replace the previous line by, e.g.,
+      # systems = ["x86_64-linux" "aarch64-linux"];
+      maxJobs = 1;
+      speedFactor = 2;
+      supportedFeatures = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+      ];
+      mandatoryFeatures = [ ];
+    }
+  ];
   nix.distributedBuilds = true;
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.qdl.mfcl5750dw ];
+    drivers = [
+      pkgs.brlaser
+      pkgs.brgenml1lpr
+      pkgs.qdl.mfcl5750dw
+    ];
     logLevel = "debug";
   };
 
@@ -93,7 +104,6 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
-
 
   services.blueman.enable = true;
 

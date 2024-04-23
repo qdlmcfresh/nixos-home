@@ -2,7 +2,10 @@
   description = "QDL's NixOS-Configuration";
 
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -22,20 +25,21 @@
     catppuccin.url = "github:catppuccin/nix";
   };
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , qdlpkgs
-    , stablepkgs
-    , nixos-hardware
-    , leonm1-hardware
-    , home-manager
-    , nix-vscode-extensions
-    , bw-key
-    , disko
-    , vscode-server
-    , hyprlock
-    , catppuccin
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      qdlpkgs,
+      stablepkgs,
+      nixos-hardware,
+      leonm1-hardware,
+      home-manager,
+      nix-vscode-extensions,
+      bw-key,
+      disko,
+      vscode-server,
+      hyprlock,
+      catppuccin,
+      ...
     }:
     let
       system = "x86_64-linux";
@@ -92,7 +96,15 @@
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-qdl overlay-stable ]; })
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  overlay-qdl
+                  overlay-stable
+                ];
+              }
+            )
             ./hosts/fuji-server
             vscode-server.nixosModules.default
             home-manager.nixosModules.home-manager
@@ -108,7 +120,15 @@
         thinkbook14 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-qdl overlay-stable ]; })
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  overlay-qdl
+                  overlay-stable
+                ];
+              }
+            )
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             ./hosts/thinkbook14

@@ -1,7 +1,4 @@
-{ config
-, pkgs
-, ...
-}:
+{ config, pkgs, ... }:
 {
   imports = [
     ./vscode.nix
@@ -19,4 +16,3 @@
     gnome.file-roller # archive manager
   ];
 }
-

@@ -1,4 +1,9 @@
-{ pkgs, lib, host, ... }:
+{
+  pkgs,
+  lib,
+  host,
+  ...
+}:
 {
   services.xserver.displayManager.sessionPackages = [ pkgs.sway ];
   services.xserver.displayManager.defaultSession = lib.mkForce "sway";
