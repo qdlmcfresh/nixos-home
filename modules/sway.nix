@@ -5,8 +5,8 @@
   ...
 }:
 {
-  services.xserver.displayManager.sessionPackages = [ pkgs.sway ];
-  services.xserver.displayManager.defaultSession = lib.mkForce "sway";
+  services.displayManager.sessionPackages = [ pkgs.sway ];
+  services.displayManager.defaultSession = lib.mkForce "sway";
   environment.systemPackages = with pkgs; [
     brightnessctl
     swaybg
