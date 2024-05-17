@@ -2,9 +2,23 @@
 #  GTK
 #
 
-{ pkgs, ... }:
+{
+  pkgs,
+  catppuccin,
+  home-manager,
+  config,
+  ...
+}:
 
 {
+  xdg = {
+    enable = true;
+  };
+  catppuccin = {
+    enable = true;
+    #flavour = "mocha";
+    flavour = "mocha";
+  };
   home = {
     pointerCursor = {
       # System-Wide Cursor
@@ -20,16 +34,16 @@
   gtk = {
     # Theming
     enable = true;
-    theme = {
-      #name = "Dracula";
-      name = "Catppuccin-Mocha-Compact-Blue-Dark";
-      #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        size = "compact";
-        variant = "mocha";
-      };
-    };
+    # theme = {
+    #   #name = "Dracula";
+    #   name = "Catppuccin-Mocha-Compact-Blue-Dark";
+    #   #package = pkgs.dracula-theme;
+    #   package = pkgs.catppuccin-gtk.override {
+    #     accents = [ "blue" ];
+    #     size = "compact";
+    #     variant = "mocha";
+    #   };
+    # };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;

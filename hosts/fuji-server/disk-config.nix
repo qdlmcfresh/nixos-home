@@ -1,5 +1,10 @@
 # Example to create a bios compatible gpt partition
-{ lib, disks ? [ "/dev/sda" ], ... }: {
+{
+  lib,
+  disks ? [ "/dev/sda" ],
+  ...
+}:
+{
   disk = lib.genAttrs disks (dev: {
     device = dev;
     type = "disk";
@@ -53,9 +58,7 @@
             type = "filesystem";
             format = "ext4";
             mountpoint = "/";
-            mountOptions = [
-              "defaults"
-            ];
+            mountOptions = [ "defaults" ];
           };
         };
       };

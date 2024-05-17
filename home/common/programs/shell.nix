@@ -1,17 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initExtra = ''
       [[ $(builtin bindkey "^[[1;5C") == *" undefined-key" ]] && builtin bindkey "^[[1;5C" "forward-word"
       [[ $(builtin bindkey "^[[1;5D") == *" undefined-key" ]] && builtin bindkey "^[[1;5D" "backward-word"
     '';
     shellAliases = {
-      ls = "ls --color=auto";
-      ll = "ls -l";
-      la = "ls -la";
-      update = "sudo nixos-rebuild switch --flake ~/nixos-home#nixos-vmware";
+      update = "sudo nixos-rebuild switch --flake ~/nixos-home#$(hostname)";
       loadsshkeys = "bw-key --host https://vault.qdlbox.de --name qdlmcfresh@gmail.com --method yubikey";
       loadsshkeys-auth = "bw-key --host https://vault.qdlbox.de --name qdlmcfresh@gmail.com --method auth";
       ssh = "TERM=xterm-256color ssh";
@@ -36,5 +34,12 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
+  };
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    icons = true;
+    git = true;
   };
 }

@@ -1,7 +1,13 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  hyprlock,
+  ...
+}:
 
 {
   imports = [
+    hyprlock.homeManagerModules.default
     ./programs
   ];
   nix = {

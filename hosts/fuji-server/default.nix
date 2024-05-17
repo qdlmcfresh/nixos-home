@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/system.nix
+    ../../modules/steam-cmd.nix
   ];
 
   boot.loader = {
@@ -35,83 +36,99 @@
     };
   };
 
-  services =
-    {
-      openssh.enable = true;
-      samba-wsdd.enable = true;
-      samba = {
-        enable = true;
-        openFirewall = true;
-        securityType = "user";
-        extraConfig = ''
-          workgroup = WORKGROUP
-          server string = micro
-          netbios name = micro
-          security = user
-          guest account = smb
-          map to guest = bad user
-          local master = yes
-          preferred master = yes
-        '';
-        shares = {
-          public = {
-            path = "/home/smb";
-            browseable = "yes";
-            "read only" = "no";
-            "guest ok" = "yes";
-            "create mask" = "0644";
-            "directory mask" = "0755";
-          };
+  virtualisation.docker.enable = true;
+
+  services = {
+    openssh.enable = true;
+    samba-wsdd.enable = true;
+    samba = {
+      enable = true;
+      openFirewall = true;
+      securityType = "user";
+      extraConfig = ''
+        workgroup = WORKGROUP
+        server string = micro
+        netbios name = micro
+        security = user
+        guest account = smb
+        map to guest = bad user
+        local master = yes
+        preferred master = yes
+      '';
+      shares = {
+        public = {
+          path = "/home/smb";
+          browseable = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0644";
+          "directory mask" = "0755";
         };
-      };
-      paperless = {
-        enable = true;
-        consumptionDir = "/home/smb/scans";
-        consumptionDirIsPublic = true;
-        address = "127.0.0.1";
-        extraConfig = {
-          PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
-          PAPERLESS_OCR_LANGUAGE = "deu+eng";
-          PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
-          PAPERLESS_STATIC_URL = "/paperless/static/";
-          PAPERLESS_USE_X_FORWARD_HOST = "true";
-          PAPERLESS_USE_X_FORWARD_PORT = "true";
-          PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD = "7";
-        };
-      };
-      nginx = {
-        enable = true;
-        recommendedProxySettings = true;
-        virtualHosts."fuji-server.fritz.box" = {
-          locations."/paperless" = {
-            proxyPass = "http://127.0.0.1:28981";
-            proxyWebsockets = true;
-          };
-        };
-        virtualHosts."paperless.lan" = {
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:28981";
-            proxyWebsockets = true;
-          };
-        };
-        virtualHosts."adguard.lan" = {
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:3000";
-            proxyWebsockets = true;
-          };
-        };
-      };
-      adguardhome = {
-        enable = true;
-        openFirewall = true;
       };
     };
+
+    paperless = {
+      enable = true;
+      package = pkgs.stable.paperless-ngx;
+      consumptionDir = "/home/smb/scans";
+      consumptionDirIsPublic = true;
+      address = "127.0.0.1";
+      settings = {
+        PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
+        PAPERLESS_OCR_LANGUAGE = "deu+eng";
+        PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
+        PAPERLESS_STATIC_URL = "/paperless/static/";
+        PAPERLESS_USE_X_FORWARD_HOST = "true";
+        PAPERLESS_USE_X_FORWARD_PORT = "true";
+        PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD = "7";
+      };
+    };
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts."fuji-server.fritz.box" = {
+        locations."/paperless" = {
+          proxyPass = "http://127.0.0.1:28981";
+          proxyWebsockets = true;
+        };
+      };
+      virtualHosts."paperless.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:28981";
+          proxyWebsockets = true;
+        };
+      };
+      virtualHosts."adguard.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:3000";
+          proxyWebsockets = true;
+        };
+      };
+      virtualHosts."immich.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:2283";
+          proxyWebsockets = true;
+        };
+      };
+    };
+    adguardhome = {
+      enable = true;
+      openFirewall = true;
+    };
+    tailscale = {
+      enable = true;
+    };
+  };
   systemd.services.vaultwarden_backup = {
     description = "Rsync backup service";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [
+      "multi-user.target"
+      "network-online.target"
+    ];
+    after = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.rsync}/bin/rsync -avz -e vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
+      ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh' ubuntu@vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
     };
   };
   systemd.timers.vaultwarden_backup = {
@@ -135,5 +152,4 @@
 
   system.stateVersion = "23.05";
   nix.settings.trusted-users = [ "nixremote" ];
-
 }
