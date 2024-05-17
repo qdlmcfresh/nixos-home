@@ -60,6 +60,15 @@
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      homeConfigurations = {
+            "qdl" = home-manager.lib.homeManagerConfiguration {
+                # Note: I am sure this could be done better with flake-utils or something
+                pkgs = import nixpkgs { inherit system; };
+                extraSpecialArgs = inputs;
+                modules = [ ./home/common/default.nix ]; # Defined later
+            };
+
+      };
       nixosConfigurations = {
         nixos-vmware = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
