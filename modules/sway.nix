@@ -7,6 +7,12 @@
 {
   services.displayManager.sessionPackages = [ pkgs.sway ];
   services.displayManager.defaultSession = lib.mkForce "sway";
+  xdg.portal.config.common.default = "*";
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-wlr
+    pkgs.xdg-desktop-portal-gtk
+  ];
   environment.systemPackages = with pkgs; [
     brightnessctl
     swaybg
