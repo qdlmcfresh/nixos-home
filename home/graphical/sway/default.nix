@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }:
 {
   wayland.windowManager.sway = {
@@ -80,106 +79,179 @@
   };
   home.file.".config/waybar/config".source = ./waybar_config;
   programs = {
-    swaylock = {
-      enable = true;
-    };
-    # waybar = {
-    #   enable = true;
-    # };
     wofi = {
       enable = true;
     };
     hyprlock = {
       enable = true;
-      general = {
-        hide_cursor = true;
-        no_fade_in = false;
-        disable_loading_bar = true;
-        grace = 0;
-      };
-      backgrounds = [
-        {
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          hide_cursor = true;
+          ignore_empty_input = false;
+          grace = 300;
+          no_fade_in = false;
+          no_fade_out = false;
+          pam_module = "login";
+        };
+
+        background = [{
           monitor = "";
-          #path = ".config/wall.png";
+          brightness = "0.817200";
           color = "rgba(25, 20, 20, 1.0)";
-          blur_passes = 1;
-          blur_size = 0;
-          brightness = 0.2;
-        }
-      ];
-      input-fields = [
-        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+          contrast = "0.891700";
+          noise = "0.011700";
+          vibrancy = "0.168600";
+          vibrancy_darkness = "0.050000";
+        }];
+
+        input-field = [{
           monitor = "";
-          size = {
-            width = 250;
-            height = 60;
-          };
-          outline_thickness = 2;
-          dots_size = 0.2;
-          dots_spacing = 0.2;
+          size = "600, 50";
+          position = "0, -80";
+          outline_thickness = 5;
           dots_center = true;
-          outer_color = "rgba(0, 0, 0, 0)";
-          inner_color = "rgba(0, 0, 0, 0.5)";
-          font_color = "rgb(200, 200, 200)";
+          outer_color = "rgb(24, 25, 38)";
+          inner_color = "rgb(91, 96, 120)";
+          font_color = "rgb(202, 211, 245)";
           fade_on_empty = false;
-          placeholder_text = ''<i><span foreground="##cdd6f4">Input Password...</span></i>'';
+          placeholder_text = ''<span foreground="##cad3f5">Place your finger on the fingerprint reader ...</span>'';
+          shadow_passes = 2;
+          bothlock_color = -1;
+          capslock_color = "-1";
+          check_color = "rgb(204, 136, 34)";
+          dots_rounding = "-1";
+          dots_size = "0.330000";
+          dots_spacing = "0.150000";
+          fade_timeout = "2000";
+          fail_color = "rgb(204, 34, 34)";
+          fail_text = "<i>$FAIL</i>";
+          fail_transition = 300;
+          halign = "center";
           hide_input = false;
-          position = {
-            x = 0;
-            y = -120;
-          };
-          halign = "center";
+          invert_numlock = false;
+          numlock_color = -1;
+          rounding = -1;
+          shadow_boost = "1.200000";
+          shadow_color = "rgba(0, 0, 0, 1.0)";
+          shadow_size = 3;
+          swap_font_color = false;
           valign = "center";
-        }
-      ];
-      labels = [
-        {
+        }];
+
+        image = [{
           monitor = "";
-          text = "$TIME";
-          font_size = 120;
-          position = {
-            x = 0;
-            y = 250;
-          };
-          valign = "center";
+          size = 120;
+          position = "0, 45";
+          path = "/home/$USER/.face";
+          border_color = "rgb(202, 211, 245)";
+          border_size = 5;
           halign = "center";
-        }
-        {
-          monitor = "";
-          text = ''
-            cmd[update:1000] /run/current-system/sw/bin/echo "<span>$(/run/current-system/sw/bin/date)</span>"
-          '';
-          font_size = 40;
-          position = {
-            x = 0;
-            y = 120;
-          };
           valign = "center";
-          halign = "center";
-        }
-        {
-          monitor = "";
-          text = "Unlock with fingerprint";
-          font_size = 20;
-          position = {
-            x = 0;
-            y = 80;
-          };
-          valign = "center";
-          halign = "center";
-        }
-        {
-          monitor = "";
-          text = "$FAIL $ATTEMPTS";
-          font_size = 20;
-          position = {
-            x = 0;
-            y = 50;
-          };
-          valign = "center";
-          halign = "center";
-        }
-      ];
+          shadow_passes = 1;
+          reload_cmd = "";
+          reload_time = -1;
+          rotate = "0.000000";
+          rounding = "-1";
+        }];
+
+        label = [
+          {
+            monitor = "";
+            text = ''<span font_weight="ultrabold">$TIME</span>'';
+            color = "rgb(202, 211, 245)";
+            font_size = 100;
+            font_family = "Hack";
+            valign = "center";
+            halign = "center";
+            position = "0, 330";
+            shadow_passes = 2;
+            rotate = "0.000000";
+            shadow_boost = "1.200000";
+            shadow_color = "rgba(0, 0, 0, 1.0)";
+            shadow_size = 3;
+          }
+          {
+            monitor = "";
+            text = ''<span font_weight="bold"> $USER</span>'';
+            color = "rgb(202, 211, 245)";
+            font_size = 25;
+            font_family = "Hack";
+            valign = "top";
+            halign = "left";
+            position = "10, 0";
+            rotate = "0.000000";
+            shadow_boost = "1.200000";
+            shadow_color = "rgba(0, 0, 0, 1.0)";
+            shadow_size = 3;
+            shadow_passes = 1;
+          }
+          {
+            monitor = "";
+            text = ''<span font_weight="ultrabold">󰌾 </span>'';
+            color = "rgb(202, 211, 245)";
+            font_size = 50;
+            font_family = "Hack";
+            valign = "center";
+            halign = "center";
+            position = "15, -350";
+            rotate = "0.000000";
+            shadow_boost = "1.200000";
+            shadow_color = "rgba(0, 0, 0, 1.0)";
+            shadow_size = 3;
+            shadow_passes = 1;
+          }
+          {
+            monitor = "";
+            text = ''<span font_weight="bold">Locked</span>'';
+            color = "rgb(202, 211, 245)";
+            font_size = 25;
+            font_family = "Hack";
+            valign = "center";
+            halign = "center";
+            position = "0, -430";
+            rotate = "0.000000";
+            shadow_boost = "1.200000";
+            shadow_color = "rgba(0, 0, 0, 1.0)";
+            shadow_size = 3;
+            shadow_passes = 1;
+          }
+          {
+            monitor = "";
+            text = ''
+              cmd[update:120000] echo "<span font_weight='bold'>$(date +'%a %d %B')</span>"'';
+            color = "rgb(202, 211, 245)";
+            font_size = 30;
+            font_family = "Hack";
+            valign = "center";
+            halign = "center";
+            position = "0, 210";
+            rotate = "0.000000";
+            shadow_boost = "1.200000";
+            shadow_color = "rgba(0, 0, 0, 1.0)";
+            shadow_size = 3;
+            shadow_passes = 1;
+          }
+          {
+            monitor = "";
+            text = ''<span font_weight="ultrabold"> </span>'';
+            color = "rgb(202, 211, 245)";
+            font_size = 25;
+            font_family = "Hack";
+            valign = "bottom";
+            halign = "right";
+            position = "5, 8";
+            rotate = "0.000000";
+            shadow_boost = "1.200000";
+            shadow_color = "rgba(0, 0, 0, 1.0)";
+            shadow_size = 3;
+            shadow_passes = 1;
+          }
+        ];
+      };
     };
   };
   services = {

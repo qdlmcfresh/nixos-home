@@ -21,7 +21,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
-    hyprlock.url = "github:hyprwm/hyprlock";
     catppuccin.url = "github:catppuccin/nix";
   };
   outputs =
@@ -37,7 +36,6 @@
       bw-key,
       disko,
       vscode-server,
-      hyprlock,
       catppuccin,
       ...
     }:
@@ -61,13 +59,12 @@
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       homeConfigurations = {
-            "qdl" = home-manager.lib.homeManagerConfiguration {
-                # Note: I am sure this could be done better with flake-utils or something
-                pkgs = import nixpkgs { inherit system; };
-                extraSpecialArgs = inputs;
-                modules = [ ./home/common/default.nix ]; # Defined later
-            };
-
+        "qdl" = home-manager.lib.homeManagerConfiguration {
+          # Note: I am sure this could be done better with flake-utils or something
+          pkgs = import nixpkgs { inherit system; };
+          extraSpecialArgs = inputs;
+          modules = [ ./home/common/default.nix ]; # Defined later
+        };
       };
       nixosConfigurations = {
         nixos-vmware = nixpkgs.lib.nixosSystem {

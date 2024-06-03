@@ -6,10 +6,7 @@
 }:
 
 {
-  imports = [
-    hyprlock.homeManagerModules.default
-    ./programs
-  ];
+  imports = [ ./programs ];
   nix = {
     package = pkgs.nix;
     settings.experimental-features = [ "nix-command" "flakes" ];
