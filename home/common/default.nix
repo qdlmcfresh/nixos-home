@@ -1,15 +1,18 @@
 {
   config,
   pkgs,
-  hyprlock,
+  lib,
   ...
 }:
 
 {
   imports = [ ./programs ];
   nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    package = lib.mkDefault pkgs.nix;
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
