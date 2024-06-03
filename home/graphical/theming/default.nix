@@ -7,6 +7,7 @@
   catppuccin,
   home-manager,
   config,
+  lib,
   ...
 }:
 
@@ -17,7 +18,7 @@
   catppuccin = {
     enable = true;
     #flavour = "mocha";
-    flavour = "mocha";
+    flavor = "mocha";
   };
   home = {
     pointerCursor = {
@@ -44,7 +45,7 @@
     #     variant = "mocha";
     #   };
     # };
-    iconTheme = {
+    iconTheme = lib.mkDefault {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
