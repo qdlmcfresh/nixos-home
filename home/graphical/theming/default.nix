@@ -2,13 +2,12 @@
 #  GTK
 #
 
-{
-  pkgs,
-  catppuccin,
-  home-manager,
-  config,
-  lib,
-  ...
+{ pkgs
+, catppuccin
+, home-manager
+, config
+, lib
+, ...
 }:
 
 {
@@ -25,10 +24,10 @@
       # System-Wide Cursor
       gtk.enable = true;
       #name = "Dracula-cursors";
-      name = "Catppuccin-Mocha-Dark-Cursors";
+      name = lib.mkDefault "Catppuccin-Mocha-Dark-Cursors";
       #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
+      package = lib.mkDefault pkgs.catppuccin-cursors.mochaDark;
+      size = lib.mkDefault 16;
     };
   };
 
