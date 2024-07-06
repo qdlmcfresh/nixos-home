@@ -14,5 +14,6 @@
     discord
     nextcloud-client
     gnome.file-roller # archive manager
+    kicad-unstable
   ];
 }
