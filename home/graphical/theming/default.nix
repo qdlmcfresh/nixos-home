@@ -34,6 +34,7 @@
   gtk = {
     # Theming
     enable = true;
+    catppuccin.enable = true;
     # theme = {
     #   #name = "Dracula";
     #   name = "Catppuccin-Mocha-Compact-Blue-Dark";

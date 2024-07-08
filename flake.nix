@@ -24,20 +24,19 @@
     catppuccin.url = "github:catppuccin/nix";
   };
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      qdlpkgs,
-      stablepkgs,
-      nixos-hardware,
-      leonm1-hardware,
-      home-manager,
-      nix-vscode-extensions,
-      bw-key,
-      disko,
-      vscode-server,
-      catppuccin,
-      ...
+    inputs@{ self
+    , nixpkgs
+    , qdlpkgs
+    , stablepkgs
+    , nixos-hardware
+    , leonm1-hardware
+    , home-manager
+    , nix-vscode-extensions
+    , bw-key
+    , disko
+    , vscode-server
+    , catppuccin
+    , ...
     }:
     let
       system = "x86_64-linux";
@@ -71,6 +70,7 @@
           system = "x86_64-linux";
           modules = [
             vscode-server.nixosModules.default
+            catppuccin.nixosModules.catppuccin
             ./hosts/nixos-vmware
             home-manager.nixosModules.home-manager
             {
@@ -78,7 +78,12 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = inputs;
-              home-manager.users.qdl = import ./home/graphical;
+              home-manager.users.qdl = {
+                imports = [
+                  ./home/graphical
+                  catppuccin.homeManagerModules.catppuccin
+                ];
+              };
             }
           ];
         };
@@ -137,8 +142,9 @@
             )
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
-            ./hosts/thinkbook14
             vscode-server.nixosModules.default
+            catppuccin.nixosModules.catppuccin
+            ./hosts/thinkbook14
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
