@@ -78,7 +78,6 @@
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
-  sound.enable = true;
 
   virtualisation.docker.enable = true;
 
