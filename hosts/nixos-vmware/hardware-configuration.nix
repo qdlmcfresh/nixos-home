@@ -40,7 +40,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
   hardware.pulseaudio.enable = true;
