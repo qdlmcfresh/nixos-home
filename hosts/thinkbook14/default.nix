@@ -100,6 +100,9 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
+  services.tailscale = {
+    enable = true;
+  };
 
   services.blueman.enable = true;
 
