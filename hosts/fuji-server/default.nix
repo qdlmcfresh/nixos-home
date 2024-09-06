@@ -117,6 +117,7 @@
     };
     tailscale = {
       enable = true;
+      useRoutingFeatures = "server";
     };
   };
   systemd.services.vaultwarden_backup = {
