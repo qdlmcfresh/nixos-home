@@ -183,7 +183,7 @@
         nixos-wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            nioxos-wsl.nixosModules.wsl
+            nixos-wsl.nixosModules.wsl
             catppuccin.nixosModules.catppuccin
             ./hosts/wsl
             home-manager.nixosModules.home-manager
