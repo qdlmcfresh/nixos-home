@@ -22,21 +22,27 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     catppuccin.url = "github:catppuccin/nix";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , qdlpkgs
-    , stablepkgs
-    , nixos-hardware
-    , leonm1-hardware
-    , home-manager
-    , nix-vscode-extensions
-    , bw-key
-    , disko
-    , vscode-server
-    , catppuccin
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      qdlpkgs,
+      stablepkgs,
+      nixos-hardware,
+      leonm1-hardware,
+      home-manager,
+      nix-vscode-extensions,
+      bw-key,
+      disko,
+      vscode-server,
+      catppuccin,
+      nixos-cosmic,
+      ...
     }:
     let
       system = "x86_64-linux";
@@ -139,11 +145,19 @@
                   overlay-stable
                 ];
               }
+
             )
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             vscode-server.nixosModules.default
             catppuccin.nixosModules.catppuccin
+            nixos-cosmic.nixosModules.default
             ./hosts/thinkbook14
             home-manager.nixosModules.home-manager
             {

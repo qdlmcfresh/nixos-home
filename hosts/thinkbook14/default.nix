@@ -108,7 +108,7 @@
 
   services.upower.enable = true;
   powerManagement.powertop.enable = true;
-  services.auto-cpufreq.enable = true;
+  # services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
       governor = "powersave";
@@ -122,4 +122,6 @@
   # services.logind.lidSwitchExternalPower = "ignore";
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
+  services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
 }
