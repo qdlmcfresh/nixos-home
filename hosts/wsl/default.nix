@@ -56,6 +56,9 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
+  programs.ssh = {
+    startAgent = true;
+  };
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
