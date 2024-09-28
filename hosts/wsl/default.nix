@@ -66,4 +66,5 @@
     # Enable integration with Docker Desktop (needs to be installed)
     docker-desktop.enable = false;
   };
+  system.stateVersion = "24.05";
 }
