@@ -2,8 +2,8 @@
 , inputs
 , ...
 }: {
-  imports = [ ./ssh ];
-  networking.hostname = "nixos-wsl";
+  imports = [ ../../modules/ssh ];
+  networking.hostName = "nixos-wsl";
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -55,6 +55,7 @@
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
+  programs.zsh.enable = true;
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
