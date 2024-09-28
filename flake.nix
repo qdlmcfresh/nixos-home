@@ -26,6 +26,11 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "stablepkgs"
+    };
+
   };
   outputs =
     inputs@{
@@ -42,6 +47,7 @@
       vscode-server,
       catppuccin,
       nixos-cosmic,
+      nixos-wsl,
       ...
     }:
     let
@@ -168,6 +174,27 @@
               home-manager.users.qdl = {
                 imports = [
                   ./home/graphical
+                  catppuccin.homeManagerModules.catppuccin
+                ];
+              };
+            }
+          ];
+        };
+        nixos-wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nioxos-wsl.nixosModules.wsl
+            catppuccin.nixosModules.catppuccin
+            ./hosts/wsl
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = inputs;
+              home-manager.users.qdl = {
+                imports = [
+                  ./home/headless
                   catppuccin.homeManagerModules.catppuccin
                 ];
               };
