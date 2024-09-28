@@ -59,6 +59,13 @@
   programs.ssh = {
     startAgent = true;
   };
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };
+  environment.systemPackages = with pkgs; [
+    wget
+  ];
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
