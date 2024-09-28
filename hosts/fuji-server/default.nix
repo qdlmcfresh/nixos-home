@@ -110,6 +110,12 @@
           proxyWebsockets = true;
         };
       };
+      virtualHosts."bookshelf.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8000";
+          proxyWebsockets = true;
+        };
+      };
     };
     adguardhome = {
       enable = true;
@@ -117,6 +123,12 @@
     };
     tailscale = {
       enable = true;
+      useRoutingFeatures = "server";
+    };
+audiobookshelf = {
+      enable = true;
+      openFirewall = true;
+      host = "0.0.0.0";
     };
   };
   systemd.services.vaultwarden_backup = {
