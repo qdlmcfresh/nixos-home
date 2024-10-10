@@ -14,5 +14,6 @@
     discord
     nextcloud-client
     file-roller # archive manager
+    jabref # bibliography manager
   ];
 }
