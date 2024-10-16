@@ -45,20 +45,20 @@
       enable = true;
       openFirewall = true;
       securityType = "user";
-      extraConfig = ''
-        workgroup = WORKGROUP
-        server string = micro
-        netbios name = micro
-        security = user
-        guest account = smb
-        map to guest = bad user
-        local master = yes
-        preferred master = yes
-      '';
-      shares = {
+      settings = {
+        global = {
+          workgroup = "WORKGROUP";
+          security = "user";
+          "server string" = "micro";
+          "netbios name" = "micro";
+          "guest account" = "smb";
+          "map to guest" = "bad user";
+          "local master" = "yes";
+          "preferred master" = "yes";
+        };
         public = {
-          path = "/home/smb";
           browseable = "yes";
+          path = "/home/smb";
           "read only" = "no";
           "guest ok" = "yes";
           "create mask" = "0644";
@@ -66,7 +66,6 @@
         };
       };
     };
-
     paperless = {
       enable = true;
       package = pkgs.stable.paperless-ngx;
@@ -86,6 +85,7 @@
     nginx = {
       enable = true;
       recommendedProxySettings = true;
+      clientMaxBodySize = "1000M";
       virtualHosts."fuji-server.fritz.box" = {
         locations."/paperless" = {
           proxyPass = "http://127.0.0.1:28981";
@@ -125,7 +125,7 @@
       enable = true;
       useRoutingFeatures = "server";
     };
-audiobookshelf = {
+    audiobookshelf = {
       enable = true;
       openFirewall = true;
       host = "0.0.0.0";

@@ -2,12 +2,13 @@
 #  GTK
 #
 
-{ pkgs
-, catppuccin
-, home-manager
-, config
-, lib
-, ...
+{
+  pkgs,
+  catppuccin,
+  home-manager,
+  config,
+  lib,
+  ...
 }:
 
 {
