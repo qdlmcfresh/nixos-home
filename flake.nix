@@ -8,7 +8,8 @@
     ];
   };
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/brother_mfc_L5750DW";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -24,7 +25,7 @@
     catppuccin.url = "github:catppuccin/nix";
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
