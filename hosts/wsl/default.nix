@@ -1,7 +1,9 @@
-{ pkgs
-, inputs
-, ...
-}: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [ ../../modules/ssh ];
   networking.hostName = "nixos-wsl";
   # Set your time zone.
