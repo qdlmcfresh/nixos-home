@@ -116,6 +116,12 @@
           proxyWebsockets = true;
         };
       };
+      virtualHosts."mealie.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:9000";
+          proxyWebsockets = true;
+        };
+      };
     };
     adguardhome = {
       enable = true;
@@ -129,6 +135,9 @@
       enable = true;
       openFirewall = true;
       host = "0.0.0.0";
+    };
+    mealie = {
+      enable = true;
     };
   };
   systemd.services.vaultwarden_backup = {
