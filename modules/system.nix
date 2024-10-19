@@ -1,12 +1,15 @@
 {
   config,
   pkgs,
+  sops-nix,
   vscode-server,
   ...
 }:
 
 {
-  imports = [ ./ssh ];
+  imports = [
+    ./ssh
+  ];
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -99,4 +102,23 @@
     })
     font-awesome
   ];
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.sshKeyPaths = [
+    "/etc/ssh/ssh_host_ed25519_key"
+    "/home/qdl/.ssh/id_ed25519"
+  ];
+  sops.age.generateKey = true;
+  sops.secrets = {
+    "test-secret" = { };
+    "openvpn/hs-openvpn-config" = {
+      path = "/home/qdl/.config/openvpn/hs.ovpn";
+      owner = config.users.users.qdl.name;
+    };
+    "openvpn/login.conf" = {
+      path = "/home/qdl/.config/openvpn/login.conf";
+      owner = config.users.users.qdl.name;
+    };
+  };
 }

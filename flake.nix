@@ -31,7 +31,7 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "stablepkgs";
     };
-
+    sops-nix.url = "github:Mic92/sops-nix";
   };
   outputs =
     inputs@{
@@ -49,6 +49,7 @@
       catppuccin,
       nixos-cosmic,
       nixos-wsl,
+      sops-nix,
       ...
     }:
     let
@@ -131,6 +132,7 @@
             )
             ./hosts/fuji-server
             vscode-server.nixosModules.default
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -165,6 +167,7 @@
             vscode-server.nixosModules.default
             catppuccin.nixosModules.catppuccin
             nixos-cosmic.nixosModules.default
+            sops-nix.nixosModules.sops
             ./hosts/thinkbook14
             home-manager.nixosModules.home-manager
             {

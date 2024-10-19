@@ -1,0 +1,10 @@
+keys:
+  - &thinkbook age1vrvq2q003z63v80jj84kxenp7v3m9vtxpk5vkdg322vd3mqamclszfzak6
+  - &fuji-server age1jqf48gux5u6r6ddclq0qncu0q6809v3tg0tk69mtupxrfwggxykq4k46kz
+
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *thinkbook
+      - *fuji-server
