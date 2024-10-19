@@ -139,6 +139,13 @@
     mealie = {
       enable = true;
     };
+    openvpn = {
+      servers = {
+        hs-vpn = {
+          config = ''config /run/secrets/openvpn/hs-openvpn-config '';
+        };
+      };
+    };
   };
   systemd.services.vaultwarden_backup = {
     description = "Rsync backup service";
