@@ -15,5 +15,6 @@
     nextcloud-client
     file-roller # archive manager
     jabref # bibliography manager
+    scrcpy # android screen mirroring
   ];
 }
