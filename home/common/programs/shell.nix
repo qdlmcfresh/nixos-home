@@ -39,7 +39,7 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-    icons = true;
+    icons = "auto";
     git = true;
   };
 }
