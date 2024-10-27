@@ -124,4 +124,5 @@
   programs.wireshark.package = pkgs.wireshark;
   services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
+  virtualisation.waydroid.enable = true;
 }
