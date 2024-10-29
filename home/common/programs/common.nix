@@ -27,6 +27,7 @@
     nix-init
 
     bw-key.defaultPackage.${pkgs.system}
+    python3
   ];
 
   programs = {
