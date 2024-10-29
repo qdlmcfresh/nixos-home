@@ -178,6 +178,7 @@
               home-manager.users.qdl = {
                 imports = [
                   ./home/graphical
+                  ./home/graphical/programs/uni.nix
                   catppuccin.homeManagerModules.catppuccin
                 ];
               };
@@ -199,6 +200,7 @@
               home-manager.users.qdl = {
                 imports = [
                   ./home/headless
+                  ./home/headless/uni.nix
                   catppuccin.homeManagerModules.catppuccin
                 ];
               };
