@@ -7,5 +7,11 @@
     pwndbg
     picocom
     nmap
+    ffuf
+    zap
+    sqlmap
+    mycli
+    gobuster
+    openvpn
   ];
 }
