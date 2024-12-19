@@ -28,6 +28,9 @@
 
     bw-key.defaultPackage.${pkgs.system}
     python3
+
+    ente-cli
+    ente-auth
   ];
 
   programs = {
