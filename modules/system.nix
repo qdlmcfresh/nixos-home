@@ -93,13 +93,9 @@
   services.gvfs.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "DroidSansMono"
-        "Hack"
-      ];
-    })
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.hack
+    nerd-fonts.fira-code
     font-awesome
   ];
 

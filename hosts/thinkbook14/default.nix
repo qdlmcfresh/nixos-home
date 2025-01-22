@@ -1,4 +1,8 @@
-{ configs, pkgs, ... }:
+{
+  configs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -63,7 +67,6 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
-    xorg.xf86videointel
     xorg.xbacklight
   ];
   services.fprintd = {

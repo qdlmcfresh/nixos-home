@@ -32,6 +32,9 @@
       inputs.nixpkgs.follows = "stablepkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
   outputs =
     inputs@{
@@ -50,6 +53,7 @@
       nixos-cosmic,
       nixos-wsl,
       sops-nix,
+      ghostty,
       ...
     }:
     let

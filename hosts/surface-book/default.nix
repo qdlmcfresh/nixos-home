@@ -65,7 +65,6 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
-    xorg.xf86videointel
     xorg.xbacklight
   ];
   environment.variables = {
