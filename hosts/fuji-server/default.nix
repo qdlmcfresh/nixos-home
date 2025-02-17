@@ -122,6 +122,12 @@
           proxyWebsockets = true;
         };
       };
+      virtualHosts."notes.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:6806";
+          proxyWebsockets = true;
+        };
+      };
     };
     adguardhome = {
       enable = true;
