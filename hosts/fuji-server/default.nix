@@ -71,7 +71,7 @@
       package = pkgs.stable.paperless-ngx;
       consumptionDir = "/home/smb/scans";
       consumptionDirIsPublic = true;
-      address = "127.0.0.1";
+      address = "0.0.0.0";
       settings = {
         PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
         PAPERLESS_OCR_LANGUAGE = "deu+eng";
