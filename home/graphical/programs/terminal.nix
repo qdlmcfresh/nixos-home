@@ -1,4 +1,4 @@
-{ pkgs, ghostty, ... }:
+{ pkgs, inputs, ... }:
 {
   programs = {
     kitty = {
@@ -6,6 +6,6 @@
     };
   };
   home.packages = [
-    ghostty.packages.x86_64-linux.default
+    inputs.ghostty.packages.x86_64-linux.default
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, bw-key, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     # archives
@@ -26,7 +26,7 @@
 
     nix-init
 
-    bw-key.defaultPackage.${pkgs.system}
+    inputs.bw-key.defaultPackage.${pkgs.system}
     python3
 
     ente-cli
