@@ -4,7 +4,6 @@
     imhex
     ghidra-bin
     pwntools
-    pwndbg
     picocom
     nmap
     ffuf
