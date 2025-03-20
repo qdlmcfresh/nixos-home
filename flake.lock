@@ -458,16 +458,16 @@
     },
     "qdlpkgs": {
       "locked": {
-        "lastModified": 1742481840,
-        "narHash": "sha256-bfR8co8Bx0+K/gT3NlnniGr79FS8rI30E22qhTJK0Aw=",
+        "lastModified": 1742483618,
+        "narHash": "sha256-ZsdOdzQjhckO991WmF8YBa25pMRSq7OARApOUU4FmKo=",
         "owner": "qdlmcfresh",
         "repo": "nixpkgs",
-        "rev": "4f752c56d6001b909cb75ee84cb7595bf9b930ec",
+        "rev": "803c0aa63e5b2a5cdb4d5cb01dca8d275eeab606",
         "type": "github"
       },
       "original": {
         "owner": "qdlmcfresh",
-        "ref": "master",
+        "ref": "libfprint-tod",
         "repo": "nixpkgs",
         "type": "github"
       }
