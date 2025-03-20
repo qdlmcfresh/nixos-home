@@ -458,16 +458,16 @@
     },
     "qdlpkgs": {
       "locked": {
-        "lastModified": 1730109463,
-        "narHash": "sha256-/tPAgy24e50aXa3g41OtN8jQvHll57IDtb1pSp9aZ5c=",
+        "lastModified": 1742481840,
+        "narHash": "sha256-bfR8co8Bx0+K/gT3NlnniGr79FS8rI30E22qhTJK0Aw=",
         "owner": "qdlmcfresh",
         "repo": "nixpkgs",
-        "rev": "bf6e2e97239b9950593d144dcce98f3aa4c834da",
+        "rev": "4f752c56d6001b909cb75ee84cb7595bf9b930ec",
         "type": "github"
       },
       "original": {
         "owner": "qdlmcfresh",
-        "ref": "brother_mfc_L5750DW",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
