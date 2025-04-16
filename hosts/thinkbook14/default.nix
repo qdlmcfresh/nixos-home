@@ -75,9 +75,6 @@
     tod.driver = pkgs.libfprint-2-tod1-elan;
   };
 
-  services.xrdp.enable = true;
-  services.xrdp.openFirewall = true;
-
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
