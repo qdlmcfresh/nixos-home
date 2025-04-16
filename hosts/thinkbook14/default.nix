@@ -54,7 +54,7 @@
       pkgs.brgenml1lpr
       pkgs.qdl.mfcl5750dw
     ];
-    logLevel = "debug";
+    logLevel = "info";
   };
 
   services.gnome.gnome-keyring.enable = true;
