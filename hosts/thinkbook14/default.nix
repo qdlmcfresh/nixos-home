@@ -71,8 +71,9 @@
   ];
   services.fprintd = {
     enable = true;
+    package = pkgs.qdl.fprintd-tod;
     tod.enable = true;
-    tod.driver = pkgs.libfprint-2-tod1-elan;
+    tod.driver = pkgs.qdl.libfprint-2-tod1-elan;
   };
 
   environment.variables = {
