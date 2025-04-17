@@ -128,6 +128,18 @@
           proxyWebsockets = true;
         };
       };
+      virtualHosts."papers.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8474";
+          proxyWebsockets = true;
+        };
+      };
+      virtualHosts."dawarich.lan" = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:3123";
+          proxyWebsockets = true;
+        };
+      };
     };
     adguardhome = {
       enable = true;
