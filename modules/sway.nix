@@ -26,7 +26,7 @@
     wl-clipboard
     wayvnc
     stable.wireplumber
-    stable.waybar
+    #stable.waybar
   ];
   security.pam.services.swaylock = { };
   security.pam.services.hyprlock = {

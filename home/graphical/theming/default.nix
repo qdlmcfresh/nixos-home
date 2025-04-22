@@ -19,6 +19,7 @@
     enable = true;
     #flavour = "mocha";
     flavor = "mocha";
+    waybar.enable = lib.mkForce false;
   };
   home = {
     pointerCursor = {

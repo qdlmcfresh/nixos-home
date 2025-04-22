@@ -7,6 +7,7 @@
 {
   wayland.windowManager.sway = {
     enable = true;
+    systemd.enable = true;
     config = rec {
       modifier = "Mod4"; # Super key
       output = {
@@ -79,9 +80,17 @@
     # wmname is needed for Java Swing applications
   };
   home.file.".config/waybar/config".source = ./waybar_config;
+  #home.file.".config/waybar/style.css".source = ./style.css;
   programs = {
     wofi = {
       enable = true;
+    };
+    waybar = {
+      enable = true;
+      systemd = {
+        enable = true;
+        target = "sway-session.target";
+      };
     };
     hyprlock = {
       enable = true;
@@ -261,6 +270,15 @@
     };
   };
   services = {
+    wpaperd = {
+      enable = true;
+      settings = {
+        default = {
+          path = "/home/qdl/Wallpapers";
+          duration = "15m";
+        };
+      };
+    };
     swayidle = {
       enable = true;
       systemdTarget = "sway-session.target";
