@@ -5,6 +5,7 @@
     ./itsec.nix
     ./terminal.nix
     ./browser.nix
+    ./distrobox.nix
   ];
   home.packages = with pkgs; [
     remmina # remote desktop client
