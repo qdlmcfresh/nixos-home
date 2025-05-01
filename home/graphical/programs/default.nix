@@ -16,7 +16,7 @@
     nextcloud-client
     file-roller # archive manager
     scrcpy # android screen mirroring
-    signal-desktop # messaging
+    signal-desktop-bin # messaging
     element-desktop # messaging
   ];
 }

@@ -19,6 +19,7 @@
     enable = true;
     #flavour = "mocha";
     flavor = "mocha";
+    gtk.enable = true;
     waybar.enable = lib.mkForce false;
   };
   home = {
@@ -32,11 +33,10 @@
       size = lib.mkDefault 16;
     };
   };
-
   gtk = {
     # Theming
     enable = true;
-    catppuccin.enable = true;
+    #catppuccin.enable = true;
     # theme = {
     #   #name = "Dracula";
     #   name = "Catppuccin-Mocha-Compact-Blue-Dark";
