@@ -11,7 +11,7 @@
       text = pkgs.lib.generators.toINI { } {
         kali = {
           image = "kalilinux/kali-rolling";
-          additional_packages = "kali-linux-headless ghidra firefox-esr gdb make curl git neovim";
+          additional_packages = "kali-linux-headless ghidra firefox-esr gdb make curl git neovim ripgrep";
           init_hooks = ''
             bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
           '';
@@ -19,7 +19,6 @@
           root = false;
           replace = true;
           home = "/var/distrobox_homes/kali/";
-          exported_apps = "firefox";
         };
       };
       onChange = # bash
