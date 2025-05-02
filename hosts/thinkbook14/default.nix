@@ -124,6 +124,18 @@
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
   services.desktopManager.cosmic.enable = true;
+  xdg = {
+    portal = {
+      enable = true;
+      config.common.default = "*";
+      wlr.enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-wlr
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-cosmic
+      ];
+    };
+  };
   # services.displayManager.cosmic-greeter.enable = true;
   virtualisation.waydroid.enable = true;
 }

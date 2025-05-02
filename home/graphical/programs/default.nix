@@ -18,5 +18,7 @@
     scrcpy # android screen mirroring
     signal-desktop-bin # messaging
     element-desktop # messaging
+    obs-studio # screen recording
+    v4l-utils # video for linux utilities
   ];
 }
