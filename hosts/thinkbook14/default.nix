@@ -129,8 +129,10 @@
       enable = true;
       config.common.default = "*";
       wlr.enable = true;
+      wlr.settings.screencast = {
+        output_name = "eDP-1";
+      };
       extraPortals = [
-        pkgs.xdg-desktop-portal-wlr
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-cosmic
       ];
