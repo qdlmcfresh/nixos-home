@@ -10,8 +10,7 @@
     "distrobox/distrobox.ini" = {
       text = pkgs.lib.generators.toINI { } {
         kali = {
-          image = "kalilinux/kali-rolling";
-          additional_packages = "kali-linux-headless ghidra firefox-esr gdb make curl git neovim ripgrep";
+          image = "ghcr.io/qdlmcfresh/kali:latest";
           init_hooks = ''
             bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
           '';
