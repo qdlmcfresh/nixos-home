@@ -190,17 +190,26 @@
           modules = [
             nixos-wsl.nixosModules.wsl
             catppuccin.nixosModules.catppuccin
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  overlay-stable
+                ];
+              }
+            )
             ./hosts/wsl
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.extraSpecialArgs = inputs;
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.qdl = {
                 imports = [
                   ./home/headless
                   ./home/headless/uni.nix
+                  ./home/graphical/programs/distrobox.nix
                   catppuccin.homeModules.catppuccin
                 ];
               };
