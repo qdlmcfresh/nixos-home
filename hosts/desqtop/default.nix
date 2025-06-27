@@ -16,7 +16,6 @@
     enable = true;
     consoleMode = "auto";
   };
-
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "desqtop";
@@ -38,6 +37,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
 
   services.avahi = {
     enable = true;
@@ -79,9 +79,7 @@
   };
 
   services.blueman.enable = true;
-
   services.upower.enable = true;
-  # services.logind.lidSwitchExternalPower = "ignore";
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
   services.desktopManager.cosmic.enable = true;
