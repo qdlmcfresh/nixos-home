@@ -211,6 +211,48 @@
             }
           ];
         };
+        desqtop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  overlay-qdl
+                  overlay-stable
+                ];
+              }
+
+            )
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
+            nixos-hardware.nixosModules.common-cpu-intel
+            vscode-server.nixosModules.default
+            catppuccin.nixosModules.catppuccin
+            nixos-cosmic.nixosModules.default
+            sops-nix.nixosModules.sops
+            ./hosts/desqtop
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.qdl = {
+                imports = [
+                  ./home/graphical
+                  ./home/graphical/programs/uni.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
+            }
+          ];
+        };
       };
     };
 }
