@@ -9,6 +9,7 @@
     ../../modules/i3.nix
     ../../modules/sway.nix
     ../../modules/virt.nix
+    ../../modules/steam.nix
     ./hardware-configuration.nix
   ];
 
