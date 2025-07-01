@@ -10,7 +10,7 @@
   inputs = {
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stablepkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/libfprint-tod";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     leonm1-hardware.url = "github:leonm1/nixos-hardware";
