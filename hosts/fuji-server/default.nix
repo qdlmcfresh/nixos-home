@@ -156,6 +156,7 @@
     };
     mealie = {
       enable = true;
+      package = pkgs.stable.mealie;
     };
     openvpn = {
       servers = {
