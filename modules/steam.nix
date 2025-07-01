@@ -13,6 +13,7 @@
     pkgs.protonup
     pkgs.lutris
     pkgs.bottles
+    pkgs.mangohud
   ];
 
   environment.sessionVariables = {
