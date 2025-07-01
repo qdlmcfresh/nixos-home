@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -26,6 +27,8 @@
   system.stateVersion = "23.05";
 
   nix.distributedBuilds = true;
+
+  services.displayManager.defaultSession = lib.mkForce "cosmic";
 
   services.printing = {
     enable = true;
@@ -56,16 +59,6 @@
 
   virtualisation.docker.enable = true;
 
-  hardware = {
-    graphics.enable = true;
-    graphics.extraPackages = with pkgs; [
-      intel-media-driver
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-    bluetooth.enable = true;
-  };
-
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -94,5 +87,18 @@
         pkgs.xdg-desktop-portal-cosmic
       ];
     };
+  };
+
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    # amdgpu.amdvlk = {
+    #   enable = true;
+    #   support32Bit.enable = true;
+    # };
+    bluetooth.enable = true;
   };
 }

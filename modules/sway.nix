@@ -6,7 +6,7 @@
 }:
 {
   services.displayManager.sessionPackages = [ pkgs.sway ];
-  services.displayManager.defaultSession = lib.mkForce "sway";
+  services.displayManager.defaultSession = "sway";
   environment.systemPackages = with pkgs; [
     brightnessctl
     swaybg
