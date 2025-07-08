@@ -3,6 +3,7 @@
   pkgs,
   sops-nix,
   vscode-server,
+  inputs,
   ...
 }:
 
@@ -118,6 +119,9 @@
       };
       "openvpn/login.conf" = {
         path = "/home/qdl/.config/openvpn/login.conf";
+        owner = config.users.users.qdl.name;
+      };
+      ssh-hosts = {
         owner = config.users.users.qdl.name;
       };
     };

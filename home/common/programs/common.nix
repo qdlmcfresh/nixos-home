@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   home.packages = with pkgs; [
     # archives
@@ -33,6 +38,12 @@
     ente-auth
   ];
 
+  sops = {
+    defaultSopsFile = ../../../secrets/secrets.yaml;
+    age.keyFile = "/home/qdl/.config/sops/age/keys.txt";
+    secrets.ssh-hosts = { };
+  };
+
   programs = {
     tmux = {
       enable = true;
@@ -46,7 +57,14 @@
         set number relativenumber
       '';
     };
-    ssh.forwardAgent = true;
+    ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+      forwardAgent = true;
+      extraConfig = "
+      Include ${config.sops.secrets.ssh-hosts.path}
+      ";
+    };
     git = {
       enable = true;
       userName = "qdlmcfresh";

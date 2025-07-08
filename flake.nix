@@ -180,6 +180,9 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.users.qdl = {
                 imports = [
                   ./home/graphical
@@ -244,6 +247,9 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.users.qdl = {
                 imports = [
                   ./home/graphical
