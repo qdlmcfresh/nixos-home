@@ -1,6 +1,7 @@
 {
   configs,
   pkgs,
+  lib,
   ...
 }:
 
@@ -56,8 +57,10 @@
     ];
     logLevel = "info";
   };
+  services.displayManager.defaultSession = lib.mkForce "cosmic";
 
   services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
 
   services.avahi = {
     enable = true;

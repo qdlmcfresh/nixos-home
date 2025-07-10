@@ -100,6 +100,8 @@
     font-awesome
   ];
 
+  home-manager.backupFileExtension = ".bak";
+
   sops = {
     defaultSopsFile = ../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
