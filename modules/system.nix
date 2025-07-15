@@ -34,7 +34,7 @@
   ];
   nix.settings.auto-optimise-store = true;
   nix.gc = {
-    automatic = true;
+    automatic = false;
     dates = "daily";
     options = "--delete-older-than 5d";
   };
@@ -67,9 +67,22 @@
   ];
 
   security.polkit.enable = true;
-  programs.zsh.enable = true;
-  programs.ssh = {
-    startAgent = true;
+
+  programs = {
+    zsh = {
+      enable = true;
+    };
+    ssh = {
+      startAgent = true;
+    };
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 3";
+      };
+      flake = "${config.users.users.qdl.home}/nixos-home";
+    };
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qdl = {
