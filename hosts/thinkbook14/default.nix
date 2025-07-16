@@ -11,6 +11,7 @@
     ../../modules/i3.nix
     ../../modules/sway.nix
     ../../modules/virt.nix
+    ../../modules/samba-mount.nix
     ./hardware-configuration.nix
   ];
 
