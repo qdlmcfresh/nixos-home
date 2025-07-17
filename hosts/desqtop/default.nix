@@ -16,41 +16,94 @@
     ./windows-reboot.nix
   ];
 
-  boot.loader.systemd-boot = {
-    enable = true;
-    consoleMode = "auto";
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "desqtop";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = false;
-
+  # System, Boot, and Nix settings
   system.stateVersion = "23.05";
-
   nix.distributedBuilds = true;
 
-  services.displayManager.defaultSession = lib.mkForce "cosmic";
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        consoleMode = "auto";
+      };
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
-  services.printing = {
+  # Networking
+  networking = {
+    hostName = "desqtop";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
+  };
+
+  # Services
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    blueman.enable = true;
+    displayManager = {
+      defaultSession = lib.mkForce "cosmic";
+    };
+    desktopManager.cosmic.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      gcr-ssh-agent.enable = false;
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
+    };
+    pulseaudio.enable = false;
+    printing = {
+      enable = true;
+      drivers = [
+        pkgs.brlaser
+        pkgs.brgenml1lpr
+        pkgs.qdl.mfcl5750dw
+      ];
+      logLevel = "info";
+    };
+    tailscale.enable = true;
+    upower.enable = true;
+  };
+
+  # Hardware, Graphics, and Audio
+  hardware = {
+    bluetooth.enable = true;
+    graphics.enable = true;
+    graphics.enable32Bit = true;
+
+  };
+
+  security.rtkit.enable = true;
+
+  # Desktop Environment and GUI
+
+  xdg.portal = {
     enable = true;
-    drivers = [
-      pkgs.brlaser
-      pkgs.brgenml1lpr
-      pkgs.qdl.mfcl5750dw
+    config.common.default = "*";
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-cosmic
     ];
-    logLevel = "info";
   };
 
-  services.gnome.gnome-keyring.enable = true;
-  services.gnome.gcr-ssh-agent.enable = false;
+  # hardware.amdgpu.amdvlk = {
+  #   enable = true;
+  #   support32Bit.enable = true;
+  # };
 
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
+  # Environment and System Packages
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
   ];
@@ -58,49 +111,12 @@
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
+  # Virtualization
   virtualisation.docker.enable = true;
 
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-  };
-  services.tailscale = {
-    enable = true;
-  };
-
-  services.blueman.enable = true;
-  services.upower.enable = true;
-  programs.wireshark.enable = true;
-  programs.wireshark.package = pkgs.wireshark;
-  services.desktopManager.cosmic.enable = true;
-  xdg = {
-    portal = {
-      enable = true;
-      config.common.default = "*";
-      wlr.enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-cosmic
-      ];
-    };
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-
-    # amdgpu.amdvlk = {
-    #   enable = true;
-    #   support32Bit.enable = true;
-    # };
-    bluetooth.enable = true;
-  };
 }
