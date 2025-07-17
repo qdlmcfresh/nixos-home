@@ -13,6 +13,7 @@
     ../../modules/steam.nix
     ../../modules/samba-mount.nix
     ./hardware-configuration.nix
+    ./windows-reboot.nix
   ];
 
   boot.loader.systemd-boot = {
