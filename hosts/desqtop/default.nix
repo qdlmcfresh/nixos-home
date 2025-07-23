@@ -12,6 +12,7 @@
     ../../modules/virt.nix
     ../../modules/steam.nix
     ../../modules/samba-mount.nix
+    ../../modules/bitwarden.nix
     ./hardware-configuration.nix
     ./windows-reboot.nix
   ];
