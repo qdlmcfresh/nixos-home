@@ -7,6 +7,9 @@
     steam = {
       enable = true;
     };
+    gamescope = {
+      enable = true;
+    };
   };
   environment.systemPackages = [
     pkgs.steam-run
