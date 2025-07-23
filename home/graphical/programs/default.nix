@@ -22,5 +22,6 @@
     v4l-utils # video for linux utilities
     spotify # music
     easyeffects # audio effects, mic noise reduction
+    rustdesk # remote desktop
   ];
 }
