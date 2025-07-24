@@ -20,8 +20,8 @@
     partOf = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.bitwarden-desktop}/bin/bitwarden-desktop";
-      Type = "oneshot";
+      ExecStart = "${pkgs.bitwarden-desktop}/bin/bitwarden";
+      Type = "simple";
     };
   };
 }
