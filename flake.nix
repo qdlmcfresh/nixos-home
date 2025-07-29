@@ -12,6 +12,7 @@
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stablepkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/libfprint-tod";
+    secrets.url = "git+ssh://git@github.com/qdlmcfresh/nixos-secrets.git?ref=main";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     leonm1-hardware.url = "github:leonm1/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
@@ -123,6 +124,10 @@
         };
         fuji-server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit system inputs;
+            secrets = inputs.secrets.config;
+          };
           modules = [
             disko.nixosModules.disko
             (
@@ -143,7 +148,9 @@
               home-manager.useUserPackages = true;
 
               home-manager.extraSpecialArgs = { inherit inputs; };
-
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.users.qdl = import ./home/headless;
             }
           ];

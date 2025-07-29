@@ -470,6 +470,7 @@
           "nixpkgs"
         ],
         "qdlpkgs": "qdlpkgs",
+        "secrets": "secrets",
         "sops-nix": "sops-nix",
         "stablepkgs": "stablepkgs",
         "vscode-server": "vscode-server"
@@ -512,6 +513,22 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
+      }
+    },
+    "secrets": {
+      "locked": {
+        "lastModified": 1753802382,
+        "narHash": "sha256-bCLolHK1RH5g/wzcW02DXuxEO7MrZIDCFeh0RdAOCyE=",
+        "ref": "main",
+        "rev": "df0308f39ff1d614e3074999a8ec9b4dc6762054",
+        "revCount": 3,
+        "type": "git",
+        "url": "ssh://git@github.com/qdlmcfresh/nixos-secrets.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/qdlmcfresh/nixos-secrets.git"
       }
     },
     "sops-nix": {

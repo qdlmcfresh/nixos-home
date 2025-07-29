@@ -51,19 +51,19 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     curl
     git
     sysstat
-    # minimal screen capture tool, used by i3 blur lock to take a screenshot
-    # print screen key is also bound to this tool in i3 config
     scrot
     neofetch
     pavucontrol
     python3
     pciutils
     usbutils
+    sops
+    age
   ];
 
   security.polkit.enable = true;
@@ -138,6 +138,9 @@
       };
       ssh-hosts = {
         owner = config.users.users.qdl.name;
+      };
+      cloudflare_env = {
+        owner = config.users.users.acme.name;
       };
     };
   };

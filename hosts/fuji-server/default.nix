@@ -1,10 +1,11 @@
-{ configs, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ../../modules/system.nix
     ../../modules/steam-cmd.nix
+    ./reverse-proxy.nix
   ];
 
   boot.loader = {
@@ -80,65 +81,6 @@
         PAPERLESS_USE_X_FORWARD_HOST = "true";
         PAPERLESS_USE_X_FORWARD_PORT = "true";
         PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD = "7";
-      };
-    };
-    nginx = {
-      enable = true;
-      recommendedProxySettings = true;
-      clientMaxBodySize = "1000M";
-      virtualHosts."fuji-server.fritz.box" = {
-        locations."/paperless" = {
-          proxyPass = "http://127.0.0.1:28981";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."paperless.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:28981";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."adguard.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:3000";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."immich.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:2283";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."bookshelf.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8000";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."mealie.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:9000";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."notes.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:6806";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."papers.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8474";
-          proxyWebsockets = true;
-        };
-      };
-      virtualHosts."dawarich.lan" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:3123";
-          proxyWebsockets = true;
-        };
       };
     };
     adguardhome = {
