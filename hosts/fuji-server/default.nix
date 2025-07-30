@@ -28,6 +28,7 @@
         5357 # wsdd
         28981 # paperless
         80 # nginx
+        443 # nginx
         53 # dns
       ];
       allowedUDPPorts = [
