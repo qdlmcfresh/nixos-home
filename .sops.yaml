@@ -3,6 +3,7 @@ keys:
   - &thinkbook-ssh age1czctxcq7wkv7zgx5xvdmu594yrpsf07hgx48apv5qhk3x3pqhafstxydgp
   - &fuji-server age1jqf48gux5u6r6ddclq0qncu0q6809v3tg0tk69mtupxrfwggxykq4k46kz
   - &desqtop age1edau20vjmzlw552c560uc89cf52fcru9a4us0qc9sy76hktqqdeqq5hwne
+  - &qdlbox age1cnlx27ev8alz9g7fq652526frl76mjrhm5cj4spnjtmxtydx0qfsphjk7z
 
 creation_rules:
   - path_regex: secrets/secrets.yaml$
@@ -12,3 +13,4 @@ creation_rules:
       - *fuji-server
       - *thinkbook-ssh
       - *desqtop
+      - *qdlbox
