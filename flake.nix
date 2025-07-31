@@ -267,6 +267,39 @@
             }
           ];
         };
+        qdlbox = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit system inputs;
+            secrets = inputs.secrets.config;
+          };
+          modules = [
+            disko.nixosModules.disko
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  overlay-qdl
+                  overlay-stable
+                ];
+              }
+            )
+            ./hosts/qdlbox
+            vscode-server.nixosModules.default
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];
+              home-manager.users.qdl = import ./home/headless;
+            }
+          ];
+        };
       };
     };
 }
