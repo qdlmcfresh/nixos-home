@@ -22,7 +22,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    hostname = "qdlbox";
+    hostName = "qdlbox";
     networkmanager.enable = true;
     firewall = {
       enable = true;
