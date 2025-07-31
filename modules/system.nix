@@ -72,6 +72,10 @@
     zsh = {
       enable = true;
     };
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     ssh = {
       startAgent = true;
     };
