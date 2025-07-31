@@ -32,8 +32,14 @@
         22 # SSH
         80 # HTTP
         443 # HTTPS
+        465 # SMTP
+        587 # SMTP
+        993 # IMAPS
+        25 # SMTP
+        27896 # headscale
       ];
       allowedUDPPorts = [
+        51820 # WireGuard
       ];
     };
   };
