@@ -144,7 +144,8 @@
         owner = config.users.users.qdl.name;
       };
       cloudflare_env = {
-        owner = config.users.users.acme.name;
+        owner =
+          if config.users.users ? "acme" then config.users.users.acme.name else config.users.users.root.name;
       };
     };
   };
