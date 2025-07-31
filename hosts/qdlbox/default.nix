@@ -43,7 +43,17 @@
       enable = true;
       name = secrets.oracle_scsi_name;
       discoverPortal = secrets.oracle_scsi_portal;
+      enableAutoLoginOut = true;
     };
+  };
+
+  fileSystems."/block" = {
+    device = "/dev/sdb1";
+    fsType = "ext4";
+    options = [
+      "_netdev"
+      "nofail"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
