@@ -6,6 +6,7 @@
   config,
   lib,
   pkgs,
+  secrets,
   ...
 }:
 
@@ -36,6 +37,18 @@
       ];
     };
   };
+
+  services = {
+    openiscsi = {
+      enable = true;
+      name = secrets.oracle_scsi_name;
+      discoverPortal = secrets.oracle_scsi_portal;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    openiscsi
+  ];
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5AM3X0ozvKCiGAwjY5ya6oYiw87qi6y6jGF/EMlZlV"
