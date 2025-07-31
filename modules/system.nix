@@ -102,6 +102,7 @@
       "input"
       "lp"
       "wireshark"
+      "podman"
     ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;

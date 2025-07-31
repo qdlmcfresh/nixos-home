@@ -63,6 +63,7 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
+    dockerSocket = true;
   };
 
   users.users.root.openssh.authorizedKeys.keys = [
