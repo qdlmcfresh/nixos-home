@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  secrets,
+  ...
+}:
 
 {
   imports = [
@@ -109,6 +114,12 @@
         };
       };
     };
+    cloudflare-dyndns = {
+      enable = true;
+      apiTokenFile = config.sops.secrets.cloudflare_dns_api_qdlbox.path;
+      domains = [ secrets.home_domain ];
+      ipv4 = true;
+    };
   };
   systemd.services.vaultwarden_backup = {
     description = "Rsync backup service";
@@ -119,7 +130,7 @@
     after = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh' ubuntu@vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
+      ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh' qdl@vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
     };
   };
   systemd.timers.vaultwarden_backup = {

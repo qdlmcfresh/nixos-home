@@ -148,6 +148,7 @@
         owner =
           if config.users.users ? "acme" then config.users.users.acme.name else config.users.users.root.name;
       };
+      cloudflare_dns_api_qdlbox = { };
     };
   };
 }
