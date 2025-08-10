@@ -39,6 +39,7 @@
   };
 
   virtualisation.docker.enable = true;
+  environment.systemPackages = [ pkgs.zulu17 ];
 
   services = {
     openssh.enable = true;
