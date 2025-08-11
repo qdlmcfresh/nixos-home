@@ -136,7 +136,7 @@
   systemd.timers.vaultwarden_backup = {
     description = "Rsync backup timer";
     timerConfig = {
-      OnCalendar = "06:00";
+      OnCalendar = "08:00";
       Unit = "vaultwarden_backup.service";
     };
     enable = true;
