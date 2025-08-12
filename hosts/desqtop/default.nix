@@ -29,6 +29,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    extraModprobeConfig = "options hid_apple fnmode=0"; # Fix F-Keys for Keychron Keyboard
   };
 
   # Networking
