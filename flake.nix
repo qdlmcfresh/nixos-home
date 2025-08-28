@@ -36,6 +36,11 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
@@ -55,6 +60,7 @@
       nixos-wsl,
       sops-nix,
       ghostty,
+      lanzaboote,
       ...
     }:
     let
@@ -241,6 +247,28 @@
                 trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
               };
             }
+            lanzaboote.nixosModules.lanzaboote
+            (
+              { pkgs, lib, ... }:
+              {
+
+                environment.systemPackages = [
+                  # For debugging and troubleshooting Secure Boot.
+                  pkgs.sbctl
+                ];
+
+                # Lanzaboote currently replaces the systemd-boot module.
+                # This setting is usually set to true in configuration.nix
+                # generated at installation time. So we force it to false
+                # for now.
+                boot.loader.systemd-boot.enable = lib.mkForce false;
+
+                boot.lanzaboote = {
+                  enable = true;
+                  pkiBundle = "/var/lib/sbctl";
+                };
+              }
+            )
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             vscode-server.nixosModules.default
