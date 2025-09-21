@@ -87,6 +87,9 @@
       };
       flake = "${config.users.users.qdl.home}/nixos-home";
     };
+    direnv = {
+      enable = true;
+    };
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qdl = {

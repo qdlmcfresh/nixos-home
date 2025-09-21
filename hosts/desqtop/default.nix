@@ -108,7 +108,9 @@
   # Environment and System Packages
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
+    openocd
   ];
+  services.udev.packages = [ pkgs.openocd ];
 
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";

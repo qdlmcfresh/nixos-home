@@ -19,7 +19,6 @@
     enable = true;
     #flavour = "mocha";
     flavor = "mocha";
-    gtk.enable = true;
     waybar.enable = lib.mkForce false;
     mako.enable = false;
   };
