@@ -695,11 +695,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1754853932,
-        "narHash": "sha256-wKrI+GIFAO9UUBVtUAbS9Vbeb1fgbP0YLGiaMUajx4E=",
+        "lastModified": 1758619812,
+        "narHash": "sha256-JKrbFN83uvdecv+XRqXyp8M2LqmPHnvKTLUAv6xJqs0=",
         "ref": "main",
-        "rev": "d0bd0c0baf82309166623e9a6009f1f360b5b89f",
-        "revCount": 5,
+        "rev": "eafc55bb18461015577a96cab261166bd12b6b07",
+        "revCount": 6,
         "type": "git",
         "url": "ssh://git@github.com/qdlmcfresh/nixos-secrets.git"
       },

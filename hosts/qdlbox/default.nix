@@ -41,6 +41,13 @@
       allowedUDPPorts = [
         51820 # WireGuard
       ];
+      interfaces = {
+        "br-79dfcc5f0154" = {
+          allowedTCPPorts = [
+            3443
+          ];
+        };
+      };
     };
   };
 
@@ -50,6 +57,29 @@
       name = secrets.oracle_scsi_name;
       discoverPortal = secrets.oracle_scsi_portal;
       enableAutoLoginOut = true;
+    };
+    vaultwarden = {
+      enable = true;
+      dbBackend = "sqlite";
+      config = with secrets;{
+        DOMAIN = vw_domain;
+        ROCKET_ADDRESS = "0.0.0.0";
+        ROCKET_PORT = 3443;
+        WEBSOCKET_ENABLED = true;
+        SIGNUPS_ALLOWED = false;
+        ADMIN_TOKEN = vw_admin_token;
+        YUBICO_CLIENT_ID = vw_yubico_client_id;
+        YUBICO_SECRET_KEY = vw_yubico_secret_key;
+        SMTP_HOST = "smtp-relay.brevo.com";
+        SMTP_SECURITY = "starttls";
+        SMTP_PORT = 587;
+        SMTP_FROM = vw_smtp_from;
+        SMTP_FROM_NAME = vw_smtp_from_name;
+        SMTP_USERNAME = brevo_smtp_user;
+        SMTP_PASSWORD = brevo_smtp_password;
+        SMTP_AUTH_MECHANISM="Login";
+      };
+      backupDir = "/block/vaultwarden_backup";
     };
   };
 
@@ -70,6 +100,7 @@
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5AM3X0ozvKCiGAwjY5ya6oYiw87qi6y6jGF/EMlZlV"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDNt6LK0SdLFoGbR7hY0X92URM1Df1tO/wGGGComRmrW"
   ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
