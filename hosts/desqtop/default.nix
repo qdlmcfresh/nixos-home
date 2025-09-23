@@ -109,15 +109,22 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     openocd
+    zulu17
   ];
   services.udev.packages = [ pkgs.openocd ];
 
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
   };
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
+  programs = {
+    kdeconnect = {
+      enable = true;
+      package = pkgs.valent;
+    };
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
   };
 
   # Virtualization
