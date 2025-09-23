@@ -128,9 +128,10 @@
       "network-online.target"
     ];
     after = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh' qdl@vps.qdlbox.de:~/docker/backup /home/qdl/vaultwarden_backup";
+      ExecStart = "${pkgs.rsync}/bin/rsync -avz --chown=qdl:users -e '${pkgs.openssh}/bin/ssh -i /root/.ssh/fuji-vw' root@vps.qdlbox.de:/block/vw_backup_archives /home/qdl/";
     };
   };
   systemd.timers.vaultwarden_backup = {
