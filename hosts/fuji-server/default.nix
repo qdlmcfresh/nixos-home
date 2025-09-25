@@ -88,6 +88,9 @@
         PAPERLESS_USE_X_FORWARD_HOST = "true";
         PAPERLESS_USE_X_FORWARD_PORT = "true";
         PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD = "7";
+        PAPERLESS_URL = "https://paperless.${secrets.domain}";
+        PAPERLESS_ALLOWED_HOSTS = "paperless.${secrets.domain},paperless.lan";
+        PAPERLESS_CORS_ALLOWED_HOSTS = "https://paperless.${secrets.domain},http://paperless.lan";
       };
     };
     adguardhome = {
