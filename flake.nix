@@ -8,8 +8,7 @@
     ];
   };
   inputs = {
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stablepkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/libfprint-tod";
     secrets.url = "git+ssh://git@github.com/qdlmcfresh/nixos-secrets.git?ref=main";
@@ -24,10 +23,6 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     catppuccin.url = "github:catppuccin/nix";
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "stablepkgs";
@@ -56,7 +51,6 @@
       disko,
       vscode-server,
       catppuccin,
-      nixos-cosmic,
       nixos-wsl,
       sops-nix,
       ghostty,
@@ -172,19 +166,11 @@
                   overlay-stable
                 ];
               }
-
             )
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-cpu-intel
             vscode-server.nixosModules.default
             catppuccin.nixosModules.catppuccin
-            nixos-cosmic.nixosModules.default
             sops-nix.nixosModules.sops
             ./hosts/thinkbook14
             home-manager.nixosModules.home-manager
@@ -241,12 +227,6 @@
               }
 
             )
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
             lanzaboote.nixosModules.lanzaboote
             (
               { pkgs, lib, ... }:
@@ -273,7 +253,6 @@
             nixos-hardware.nixosModules.common-cpu-intel
             vscode-server.nixosModules.default
             catppuccin.nixosModules.catppuccin
-            nixos-cosmic.nixosModules.default
             sops-nix.nixosModules.sops
             ./hosts/desqtop
             home-manager.nixosModules.home-manager
