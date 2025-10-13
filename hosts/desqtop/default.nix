@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
@@ -13,6 +14,7 @@
     ../../modules/steam.nix
     ../../modules/samba-mount.nix
     ../../modules/bitwarden.nix
+    ../../modules/winboat.nix
     ./hardware-configuration.nix
     ./windows-reboot.nix
   ];
@@ -29,7 +31,11 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    extraModprobeConfig = "options hid_apple fnmode=0"; # Fix F-Keys for Keychron Keyboard
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    extraModprobeConfig = ''
+      options hid_apple fnmode=0
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    ''; # Fix F-Keys for Keychron Keyboard and enable v4l2loopback for OBS
   };
 
   # Networking

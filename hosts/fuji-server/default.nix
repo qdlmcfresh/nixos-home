@@ -76,7 +76,7 @@
     };
     paperless = {
       enable = true;
-      package = pkgs.stable.paperless-ngx;
+      package = pkgs.paperless-ngx;
       consumptionDir = "/home/smb/scans";
       consumptionDirIsPublic = true;
       address = "0.0.0.0";
@@ -122,6 +122,18 @@
       apiTokenFile = config.sops.secrets.cloudflare_dns_api_qdlbox.path;
       domains = [ secrets.home_domain ];
       ipv4 = true;
+    };
+    grocy = {
+      enable = true;
+      hostName = "grocy." + secrets.domain;
+      nginx.enableSSL = true;
+      settings = {
+        currency = "EUR";
+        culture = "de";
+        calendar = {
+          firstDayOfWeek = 1;
+        };
+      };
     };
   };
   systemd.services.vaultwarden_backup = {

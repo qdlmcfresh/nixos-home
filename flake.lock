@@ -573,7 +573,8 @@
         "secrets": "secrets",
         "sops-nix": "sops-nix",
         "stablepkgs": "stablepkgs",
-        "vscode-server": "vscode-server"
+        "vscode-server": "vscode-server",
+        "winboat": "winboat"
       }
     },
     "rust-overlay": {
@@ -741,6 +742,26 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixos-vscode-server",
+        "type": "github"
+      }
+    },
+    "winboat": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760343724,
+        "narHash": "sha256-ywupxNDWH3DtJs+yw1ifin8LIJEnNK9RPI5toRlXhYg=",
+        "owner": "TibixDev",
+        "repo": "winboat",
+        "rev": "2f7a2ce7faef517bb7a09000ceb466390dd2b190",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TibixDev",
+        "repo": "winboat",
         "type": "github"
       }
     },
