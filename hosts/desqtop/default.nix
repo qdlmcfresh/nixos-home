@@ -83,7 +83,7 @@
       drivers = [
         pkgs.brlaser
         pkgs.brgenml1lpr
-        pkgs.qdl.mfcl5750dw
+        pkgs.mfcl5750dw
       ];
       logLevel = "info";
     };

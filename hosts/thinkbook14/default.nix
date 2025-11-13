@@ -55,7 +55,7 @@
     drivers = [
       pkgs.brlaser
       pkgs.brgenml1lpr
-      pkgs.qdl.mfcl5750dw
+      pkgs.mfcl5750dw
     ];
     logLevel = "info";
   };
@@ -76,9 +76,9 @@
   ];
   services.fprintd = {
     enable = true;
-    package = pkgs.qdl.fprintd-tod;
+    package = pkgs.fprintd-tod;
     tod.enable = true;
-    tod.driver = pkgs.qdl.libfprint-2-tod1-elan;
+    tod.driver = pkgs.libfprint-2-tod1-elan;
   };
 
   environment.variables = {
