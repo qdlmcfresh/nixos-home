@@ -10,8 +10,6 @@
     '';
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake ~/nixos-home#$(hostname)";
-      loadsshkeys = "bw-key --host https://vault.qdlbox.de --name qdlmcfresh@gmail.com --method yubikey";
-      loadsshkeys-auth = "bw-key --host https://vault.qdlbox.de --name qdlmcfresh@gmail.com --method auth";
       ssh = "TERM=xterm-256color ssh";
     };
     oh-my-zsh = {

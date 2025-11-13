@@ -17,9 +17,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    bw-key.url = "github:qdlmcfresh/bw-key";
-    bw-key.inputs.nixpkgs.follows = "nixpkgs";
-    disko.url = "github:nix-community/disko";
+        disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     catppuccin.url = "github:catppuccin/nix";
@@ -47,7 +45,6 @@
       leonm1-hardware,
       home-manager,
       nix-vscode-extensions,
-      bw-key,
       disko,
       vscode-server,
       catppuccin,

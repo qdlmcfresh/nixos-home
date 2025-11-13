@@ -1,4 +1,4 @@
-{ pkgs, bw-key, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     firefox

@@ -31,7 +31,6 @@
 
     nix-init
 
-    inputs.bw-key.defaultPackage.${pkgs.system}
     python3
 
     ente-cli
