@@ -63,6 +63,14 @@
       gnome-keyring.enable = true;
       gcr-ssh-agent.enable = false;
     };
+    openvpn = {
+      servers = {
+        hs-vpn = {
+          config = ''config /run/secrets/openvpn/hs-openvpn-config '';
+          autoStart = false;
+        };
+      };
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -118,6 +126,7 @@
     zulu17
   ];
   services.udev.packages = [ pkgs.openocd ];
+  users.groups.plugdev = { }; # For OpenOCD access
 
   environment.variables = {
     MOZ_USE_XINPUT2 = "1";
@@ -132,7 +141,7 @@
       package = pkgs.wireshark;
     };
   };
-
+  programs.dconf.enable = true;
   # Virtualization
   virtualisation.docker.enable = true;
 
