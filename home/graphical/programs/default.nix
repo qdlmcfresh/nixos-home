@@ -17,7 +17,6 @@
     file-roller # archive manager
     scrcpy # android screen mirroring
     signal-desktop-bin # messaging
-    element-desktop # messaging
     v4l-utils # video for linux utilities
     spotify # music
     tidal-hifi # music
