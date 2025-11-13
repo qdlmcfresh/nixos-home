@@ -26,9 +26,6 @@
       inputs.nixpkgs.follows = "stablepkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       # Optional but recommended to limit the size of your system closure.
@@ -50,7 +47,6 @@
       catppuccin,
       nixos-wsl,
       sops-nix,
-      ghostty,
       lanzaboote,
       ...
     }:
