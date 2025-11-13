@@ -105,6 +105,7 @@
       "input"
       "lp"
       "wireshark"
+      "plugdev"
       "podman"
     ];
     packages = with pkgs; [ ];
