@@ -59,16 +59,22 @@
     };
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
-      forwardAgent = true;
+      matchBlocks = {
+        "*" = {
+          addKeysToAgent = "yes";
+          forwardAgent = true;
+        };
+      };
       extraConfig = "
       Include ${config.sops.secrets.ssh-hosts.path}
       ";
     };
     git = {
       enable = true;
-      userName = "qdlmcfresh";
-      userEmail = "qdlmcfresh@gmail.com";
+      settings = {
+        user.name = "qdlmcfresh";
+        user.email = "qdlmcfresh@gmail.com";
+      };
     };
   };
 }
