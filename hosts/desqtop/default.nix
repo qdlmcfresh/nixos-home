@@ -14,7 +14,6 @@
     ../../modules/steam.nix
     ../../modules/samba-mount.nix
     ../../modules/bitwarden.nix
-    ../../modules/winboat.nix
     ./hardware-configuration.nix
     ./windows-reboot.nix
   ];

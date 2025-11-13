@@ -36,10 +36,6 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    winboat = {
-      url = "github:TibixDev/winboat";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     inputs@{
@@ -59,7 +55,6 @@
       sops-nix,
       ghostty,
       lanzaboote,
-      winboat,
       ...
     }:
     let

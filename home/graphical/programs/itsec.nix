@@ -12,5 +12,6 @@
     mycli
     gobuster
     openvpn
+    winboat
   ];
 }
