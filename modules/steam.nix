@@ -11,12 +11,12 @@
       enable = true;
     };
   };
-  environment.systemPackages = [
-    pkgs.steam-run
-    pkgs.protonup
-    pkgs.lutris
-    pkgs.bottles
-    pkgs.mangohud
+  environment.systemPackages = with pkgs; [
+    steam-run
+    protonup-ng
+    lutris
+    bottles
+    mangohud
   ];
 
   environment.sessionVariables = {
