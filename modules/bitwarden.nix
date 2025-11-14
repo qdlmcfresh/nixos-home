@@ -9,7 +9,7 @@
   ];
 
   programs.ssh.startAgent = lib.mkForce false;
-
+  security.pam.sshAgentAuth.enable = lib.mkForce false;
   environment.variables = {
     SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
   };
@@ -24,4 +24,5 @@
       Type = "simple";
     };
   };
+
 }
