@@ -58,6 +58,10 @@
       discoverPortal = secrets.oracle_scsi_portal;
       enableAutoLoginOut = true;
     };
+    adguardhome = {
+      enable = true;
+      openFirewall = true;
+    };
     vaultwarden = {
       enable = true;
       dbBackend = "sqlite";
@@ -80,6 +84,9 @@
         SMTP_AUTH_MECHANISM="Login";
       };
       backupDir = "/block/vaultwarden_backup";
+    };
+    tailscale = {
+      enable = true;
     };
   };
 
