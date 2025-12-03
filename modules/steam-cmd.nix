@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     steam-run
-    steamPackages.steamcmd
+    steamcmd
     steam-tui
   ];
 }
