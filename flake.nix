@@ -9,7 +9,7 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stablepkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/libfprint-tod";
     secrets.url = "git+ssh://git@github.com/qdlmcfresh/nixos-secrets.git?ref=main";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
