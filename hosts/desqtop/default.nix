@@ -30,6 +30,13 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    kernel = {
+      sysctl = {
+        "vm.max_map_count" = 2147483642; # Essential for UE5 games like Arc Raiders
+        "kernel.sysrq" = 1; # Safety net for reboots
+      };
+    };
+    kernelParams = [ "vsyscall=emulate" ]; # Possible ArC Raiders fix for "PioneerGame.exe[7959] vsyscall read attempt denied"
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     extraModprobeConfig = ''
       options hid_apple fnmode=0
