@@ -73,6 +73,7 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     xorg.xbacklight
+    openocd
   ];
   services.fprintd = {
     enable = true;
@@ -143,6 +144,39 @@
       ];
     };
   };
+
+  services.udev.packages = [ pkgs.openocd ];
+  users.groups.plugdev = { };
+  users.users.qdl.extraGroups = [ "plugdev" ];
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374d", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3loader_%n"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374e", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3_%n"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374f", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3_%n"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3753", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3_%n"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3754", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3_%n"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3755", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3loader_%n"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3757", \
+        MODE="660", GROUP="plugdev", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1", \
+        SYMLINK+="stlinkv3_%n"
+  '';
   # services.displayManager.cosmic-greeter.enable = true;
   virtualisation.waydroid.enable = true;
 }
