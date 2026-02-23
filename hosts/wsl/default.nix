@@ -1,6 +1,8 @@
 {
   pkgs,
   inputs,
+  config,
+  sops-nix,
   ...
 }:
 {
@@ -84,6 +86,18 @@
   services = {
     openssh = {
       enable = true;
+    };
+  };
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age = {
+      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    };
+    secrets = {
+      test-secret = {
+        owner = config.users.users.qdl.name;
+      };
     };
   };
   system.stateVersion = "24.05";
