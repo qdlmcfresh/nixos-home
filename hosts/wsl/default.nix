@@ -63,7 +63,7 @@
   };
   programs.nix-ld = {
     enable = true;
-    package = pkgs.nix-ld-rs;
+    package = pkgs.nix-ld;
   };
   environment.systemPackages = with pkgs; [
     wget
@@ -75,7 +75,7 @@
     wslConf.network.generateHosts = false;
     defaultUser = "qdl";
     startMenuLaunchers = true;
-
+    ssh-agent.enable = true;
     # Enable integration with Docker Desktop (needs to be installed)
     docker-desktop.enable = false;
   };
