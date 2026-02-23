@@ -67,6 +67,8 @@
   };
   environment.systemPackages = with pkgs; [
     wget
+    sops
+    age
   ];
   wsl = {
     enable = true;
@@ -78,6 +80,11 @@
     ssh-agent.enable = true;
     # Enable integration with Docker Desktop (needs to be installed)
     docker-desktop.enable = false;
+  };
+  services = {
+    openssh = {
+      enable = true;
+    };
   };
   system.stateVersion = "24.05";
 }
