@@ -101,6 +101,8 @@
 
   environment.systemPackages = with pkgs; [
     openiscsi
+    openssl # Mailcow dependency
+    jq # Mailcow dependency
   ];
 
   virtualisation.docker.enable = true;
