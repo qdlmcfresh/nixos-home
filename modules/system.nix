@@ -57,7 +57,6 @@
     git
     sysstat
     scrot
-    neofetch
     pavucontrol
     python3
     pciutils
