@@ -221,6 +221,41 @@
             }
           ];
         };
+        wsl-work = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-wsl.nixosModules.wsl
+            catppuccin.nixosModules.catppuccin
+            (
+              { config, pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  overlay-stable
+                ];
+              }
+            )
+            sops-nix.nixosModules.sops
+            ./hosts/wsl-work
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.sharedModules = [
+	      	inputs.sops-nix.homeManagerModules.sops
+	      ];
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.qdl = {
+                imports = [
+                  ./home/headless
+                  ./home/headless/uni.nix
+                  ./home/graphical/programs/distrobox.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
+            }
+          ];
+        };
         desqtop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs system; };

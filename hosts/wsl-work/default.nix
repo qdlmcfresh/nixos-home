@@ -1,0 +1,104 @@
+{
+  pkgs,
+  inputs,
+  config,
+  sops-nix,
+  ...
+}:
+{
+  imports = [ ../../modules/ssh ];
+  networking.hostName = "wsl-work";
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 30d";
+  };
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    autoPrune.enable = true;
+  };
+  users.users.qdl = {
+    isNormalUser = true;
+    description = "qdl";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "audio"
+      "dialout"
+      "input"
+      "lp"
+      "wireshark"
+    ];
+    packages = with pkgs; [ ];
+    shell = pkgs.zsh;
+  };
+  programs.zsh.enable = true;
+  programs.ssh = {
+    startAgent = false;
+  };
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld;
+  };
+  environment.systemPackages = with pkgs; [
+    wget
+    sops
+    age
+  ];
+  wsl = {
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    #wslConf.interop.appendWindowsPath = false;
+    wslConf.network.generateHosts = false;
+    wslConf.interop.enabled = true;
+    defaultUser = "qdl";
+    startMenuLaunchers = true;
+    ssh-agent.enable = true;
+    # Enable integration with Docker Desktop (needs to be installed)
+    docker-desktop.enable = false;
+  };
+  services = {
+    openssh = {
+      enable = true;
+    };
+  };
+  #sops = {
+  #  defaultSopsFile = ../../secrets/secrets.yaml;
+  #  defaultSopsFormat = "yaml";
+  #  age = {
+  #    sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  #  };
+  #  secrets = {
+  #    test-secret = {
+  #      owner = config.users.users.qdl.name;
+  #    };
+  #  };
+  #};
+  system.stateVersion = "25.11";
+}
