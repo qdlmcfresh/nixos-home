@@ -21,6 +21,6 @@
     spotify # music
     tidal-hifi # music
     easyeffects # audio effects, mic noise reduction
-    rustdesk # remote desktop
+stable.    rustdesk # remote desktop
   ];
 }
