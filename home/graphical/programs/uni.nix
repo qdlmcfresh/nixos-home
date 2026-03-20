@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    stable.jabref # bibliography manager
+    jabref # bibliography manager
     papers # pdf viewer
   ];
 
