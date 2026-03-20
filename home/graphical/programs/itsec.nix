@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     imhex
-    ghidra-bin
+    ghidra
     pwntools
     picocom
     nmap
