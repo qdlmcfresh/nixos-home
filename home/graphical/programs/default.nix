@@ -21,6 +21,7 @@
     spotify # music
     tidal-hifi # music
     easyeffects # audio effects, mic noise reduction
-stable.    rustdesk # remote desktop
+    stable.rustdesk # remote desktop
+    gemini-cli
   ];
 }
