@@ -5,7 +5,7 @@
 }:
 {
   environment.systemPackages = [
-    pkgs.bitwarden-desktop
+    pkgs.stable.bitwarden-desktop
   ];
 
   programs.ssh.startAgent = lib.mkForce false;
