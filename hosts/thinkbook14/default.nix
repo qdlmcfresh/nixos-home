@@ -12,7 +12,6 @@
     ../../modules/sway.nix
     ../../modules/virt.nix
     ../../modules/samba-mount.nix
-    ../../modules/bitwarden.nix
     ./hardware-configuration.nix
   ];
 

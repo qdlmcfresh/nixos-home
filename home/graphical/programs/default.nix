@@ -6,6 +6,7 @@
     ./terminal.nix
     ./browser.nix
     ./distrobox.nix
+    ./bitwarden.nix
   ];
   home.packages = with pkgs; [
     remmina # remote desktop client

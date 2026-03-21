@@ -13,7 +13,6 @@
     ../../modules/virt.nix
     ../../modules/steam.nix
     ../../modules/samba-mount.nix
-    ../../modules/bitwarden.nix
     ./hardware-configuration.nix
     ./windows-reboot.nix
   ];
@@ -72,7 +71,7 @@
     openvpn = {
       servers = {
         hs-vpn = {
-          config = ''config /run/secrets/openvpn/hs-openvpn-config '';
+          config = "config /run/secrets/openvpn/hs-openvpn-config ";
           autoStart = false;
         };
       };

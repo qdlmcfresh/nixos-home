@@ -64,9 +64,9 @@
           forwardAgent = true;
         };
       };
-      extraConfig = "
-      Include ${config.sops.secrets.ssh-hosts.path}
-      ";
+      extraConfig = ''
+        Include ${config.sops.secrets.ssh-hosts.path}
+      '';
     };
     git = {
       enable = true;

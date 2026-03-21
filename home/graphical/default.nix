@@ -35,29 +35,4 @@
     [components]
     ssh=false
   '';
-
-  systemd.user.sessionVariables = {
-    SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
-  };
-  # Force the gnome-keyring ssh socket path to point to the bitwarden agent socket.
-  systemd.user.services.link-ssh-auth-sock = {
-    Unit = {
-      Description = "Link Bitwarden SSH agent socket to gnome-keyring path";
-      Before = [ "graphical-session.target" ];
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart =
-        let
-          script = pkgs.writeShellScript "link-ssh-sock.sh" ''
-            mkdir -p /run/user/$(${pkgs.coreutils}/bin/id -u)/keyring
-            ${pkgs.coreutils}/bin/ln -sf "$HOME/.bitwarden-ssh-agent.sock" /run/user/$(${pkgs.coreutils}/bin/id -u)/keyring/ssh
-          '';
-        in
-        "${script}";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
 }
