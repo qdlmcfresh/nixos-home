@@ -9,7 +9,7 @@
     ffuf
     zap
     sqlmap
-    mycli
+    #mycli
     gobuster
     openvpn
     winboat
