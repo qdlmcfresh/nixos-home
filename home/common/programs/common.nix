@@ -54,6 +54,7 @@
       defaultEditor = true; # set nvim as default editor
       extraConfig = ''
         set number relativenumber
+        set clipboard+=unnamedplus
       '';
     };
     ssh = {
