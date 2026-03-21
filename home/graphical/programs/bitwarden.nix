@@ -9,7 +9,9 @@
       forwardAgent = true;
     };
     "bitwarden-agent" = {
-      match = ''host * exec "test -S ${config.home.homeDirectory}/.bitwarden-ssh-agent.sock"'';
+      # 1. test -z "$SSH_CONNECTION": Ensure we are NOT currently inside an SSH session
+      # 2. test -S /path/to/socket: Ensure the Bitwarden socket file actually exists
+      match = ''host * exec "test -z \"$SSH_CONNECTION\" && test -S ${config.home.homeDirectory}/.bitwarden-ssh-agent.sock"'';
       extraOptions = {
         IdentityAgent = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
       };
