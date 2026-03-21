@@ -18,7 +18,6 @@
     };
   };
 
-  # Note: Home Manager's systemd syntax strictly uses Unit, Service, and Install attribute sets
   systemd.user.services.bitwarden-desktop = {
     Unit = {
       Description = "Bitwarden Desktop";
