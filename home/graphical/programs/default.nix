@@ -16,7 +16,7 @@
     nextcloud-client
     file-roller # archive manager
     scrcpy # android screen mirroring
-    signal-desktop-bin # messaging
+    signal-desktop # messaging
     v4l-utils # video for linux utilities
     spotify # music
     tidal-hifi # music
