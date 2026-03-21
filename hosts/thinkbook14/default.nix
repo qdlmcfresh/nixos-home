@@ -92,7 +92,7 @@
     graphics.enable = true;
     graphics.extraPackages = with pkgs; [
       intel-media-driver
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
     bluetooth.enable = true;
