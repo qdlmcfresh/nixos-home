@@ -7,6 +7,9 @@
   programs.ssh.matchBlocks = {
     "*" = {
       forwardAgent = true;
+    };
+    "bitwarden-agent" = {
+      match = ''host * exec "test -S ${config.home.homeDirectory}/.bitwarden-ssh-agent.sock"'';
       extraOptions = {
         IdentityAgent = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
       };
