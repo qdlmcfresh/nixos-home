@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   home.packages = [
-    pkgs.stable.bitwarden-desktop
+    pkgs.bitwarden-desktop
   ];
 
   programs.ssh.matchBlocks = {

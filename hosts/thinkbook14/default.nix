@@ -177,5 +177,10 @@
         SYMLINK+="stlinkv3_%n"
   '';
   # services.displayManager.cosmic-greeter.enable = true;
-  virtualisation.waydroid.enable = true;
+  virtualisation = {
+    waydroid = {
+      enable = true;
+      package = pkgs.waydroid-nftables;
+    };
+  };
 }

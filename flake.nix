@@ -9,13 +9,15 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stablepkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    stablepkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     qdlpkgs.url = "github:qdlmcfresh/nixpkgs/libfprint-tod";
     secrets.url = "git+ssh://git@github.com/qdlmcfresh/nixos-secrets.git?ref=main";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     leonm1-hardware.url = "github:leonm1/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +29,7 @@
     };
     sops-nix.url = "github:Mic92/sops-nix";
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -65,6 +67,9 @@
           inherit system;
           config.allowUnfree = true;
         };
+      };
+      overlay-bitwarden = final: prev: {
+        bitwarden-desktop = prev.bitwarden-desktop.override { electron_39 = final.electron_39-bin; };
       };
     in
     {
@@ -158,6 +163,7 @@
                 nixpkgs.overlays = [
                   overlay-qdl
                   overlay-stable
+                  overlay-bitwarden
                 ];
               }
             )
@@ -207,8 +213,8 @@
               home-manager.useUserPackages = true;
 
               home-manager.sharedModules = [
-	      	inputs.sops-nix.homeManagerModules.sops
-	      ];
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.qdl = {
                 imports = [
@@ -242,8 +248,8 @@
               home-manager.useUserPackages = true;
 
               home-manager.sharedModules = [
-	      	inputs.sops-nix.homeManagerModules.sops
-	      ];
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.qdl = {
                 imports = [

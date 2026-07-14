@@ -38,8 +38,14 @@
     dates = "daily";
     options = "--delete-older-than 5d";
   };
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
+    };
+  };
   services.openssh = {
     enable = true;
     settings = {
