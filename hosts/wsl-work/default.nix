@@ -65,11 +65,31 @@
   programs.nix-ld = {
     enable = true;
     package = pkgs.nix-ld;
+    libraries = with pkgs; [
+      # List by default
+      zlib
+      zstd
+      stdenv.cc.cc
+      curl
+      openssl
+      attr
+      libssh
+      bzip2
+      libxml2
+      acl
+      libsodium
+      util-linux
+      xz
+      systemd
+      libgcc
+    ];
   };
   environment.systemPackages = with pkgs; [
     wget
     sops
     age
+    awscli2
+    claude-code
   ];
   wsl = {
     enable = true;
