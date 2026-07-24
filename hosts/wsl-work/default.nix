@@ -31,7 +31,7 @@
   ];
   nix.settings.auto-optimise-store = true;
   nix.gc = {
-    automatic = true;
+    automatic = false;
     dates = "daily";
     options = "--delete-older-than 30d";
   };
@@ -57,6 +57,14 @@
     ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
+  };
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 3";
+    };
+    flake = "${config.users.users.qdl.home}/nixos-home";
   };
   programs.zsh.enable = true;
   programs.ssh = {
