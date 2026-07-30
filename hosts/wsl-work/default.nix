@@ -98,6 +98,7 @@
     age
     awscli2
     claude-code
+    opencode
   ];
   wsl = {
     enable = true;
