@@ -68,9 +68,6 @@
           config.allowUnfree = true;
         };
       };
-      overlay-bitwarden = final: prev: {
-        bitwarden-desktop = prev.bitwarden-desktop.override { electron_39 = final.electron_39-bin; };
-      };
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
@@ -163,7 +160,6 @@
                 nixpkgs.overlays = [
                   overlay-qdl
                   overlay-stable
-                  overlay-bitwarden
                 ];
               }
             )
