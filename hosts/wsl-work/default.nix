@@ -99,13 +99,16 @@
     awscli2
     claude-code
     opencode
+    qemu
   ];
   wsl = {
     enable = true;
-    wslConf.automount.root = "/mnt";
-    #wslConf.interop.appendWindowsPath = false;
-    wslConf.network.generateHosts = false;
-    wslConf.interop.enabled = true;
+    wslConf = {
+      automount.root = "/mnt";
+      network.generateHosts = false;
+      interop.enabled = true;
+      boot.initTimeout = 40000;
+    };
     defaultUser = "qdl";
     startMenuLaunchers = true;
     ssh-agent.enable = true;
