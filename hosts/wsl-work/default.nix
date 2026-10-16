@@ -100,6 +100,8 @@
     claude-code
     opencode
     qemu
+    bubblewrap
+    socat
   ];
   wsl = {
     enable = true;
