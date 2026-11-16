@@ -15,6 +15,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disk-config.nix
+    ./headscale.nix
     ../../modules/system.nix
   ];
 
@@ -65,7 +66,7 @@
     vaultwarden = {
       enable = true;
       dbBackend = "sqlite";
-      config = with secrets;{
+      config = with secrets; {
         DOMAIN = vw_domain;
         ROCKET_ADDRESS = "0.0.0.0";
         ROCKET_PORT = 3443;
@@ -81,7 +82,7 @@
         SMTP_FROM_NAME = vw_smtp_from_name;
         SMTP_USERNAME = brevo_smtp_user;
         SMTP_PASSWORD = brevo_smtp_password;
-        SMTP_AUTH_MECHANISM="Login";
+        SMTP_AUTH_MECHANISM = "Login";
       };
       backupDir = "/block/vaultwarden_backup";
     };
