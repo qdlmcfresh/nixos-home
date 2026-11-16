@@ -9,7 +9,7 @@
     port = 8080;
 
     settings = {
-      server_url = "https://headscale.${secrets.domain}";
+      server_url = "https://headscale.${secrets.ente_domain}";
 
       derp = {
         server.enabled = false;
@@ -49,7 +49,7 @@
       };
       headscale = {
         url = "http://127.0.0.1:8080";
-        public_url = "https://headscale.qdlbox.de";
+        public_url = "https://headscale.${secrets.ente_domain}";
       };
       # Login via headscale API key created with:
       #   headscale apikeys create --expiration 365d
