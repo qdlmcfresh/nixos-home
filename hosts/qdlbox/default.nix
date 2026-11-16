@@ -47,7 +47,7 @@
           allowedTCPPorts = [
             3443
             8080 # headscale
-            3000 # headplane
+            3003 # headplane
           ];
         };
       };

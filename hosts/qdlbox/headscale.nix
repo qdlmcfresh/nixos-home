@@ -42,7 +42,7 @@
     settings = {
       server = {
         host = "0.0.0.0";
-        port = 3000;
+        port = 3003;
         # Secret lives outside the nix store; create it once on the host:
         # head -c 24 /dev/urandom | base64 | cut -c1-32 | sudo tee /var/lib/headplane/cookie_secret
         cookie_secret_path = "/var/lib/headplane/cookie_secret";
