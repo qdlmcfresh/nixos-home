@@ -59,10 +59,11 @@
     };
     ssh = {
       enable = true;
-      matchBlocks = {
+      enableDefaultConfig = false;
+      settings = {
         "*" = {
-          addKeysToAgent = "yes";
-          forwardAgent = true;
+          AddKeysToAgent = "yes";
+          ForwardAgent = true;
         };
       };
       extraConfig = ''
