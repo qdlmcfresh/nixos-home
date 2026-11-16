@@ -1,5 +1,6 @@
 {
   secrets,
+  ...
 }:
 {
   services.headscale = {
