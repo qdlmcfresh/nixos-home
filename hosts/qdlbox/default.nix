@@ -46,6 +46,8 @@
         "br-79dfcc5f0154" = {
           allowedTCPPorts = [
             3443
+            8080 # headscale
+            3000 # headplane
           ];
         };
       };
