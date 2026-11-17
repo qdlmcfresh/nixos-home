@@ -65,6 +65,22 @@
           proxyWebsockets = true;
         };
       };
+      "termix.${secrets.domain}" = {
+        useACMEHost = "${secrets.domain}";
+        addSSL = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8080";
+          proxyWebsockets = true;
+        };
+      };
+      "stump.${secrets.domain}" = {
+        useACMEHost = "${secrets.domain}";
+        addSSL = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:10801";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
   security.acme = {
