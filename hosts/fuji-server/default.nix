@@ -1,16 +1,27 @@
 {
   config,
   pkgs,
+  inputs,
   secrets,
   ...
 }:
 
 {
+  # paperless and mealie run the stable package; using the unstable modules for
+  # them caused package/module mismatches (tiktokenCacheDir eval failure,
+  # `document_index --if-needed` runtime failure). Pin both modules to the
+  # same stable nixpkgs as the packages.
+  disabledModules = [
+    "services/misc/paperless.nix"
+    "services/web-apps/mealie.nix"
+  ];
   imports = [
     ./hardware-configuration.nix
     ../../modules/system.nix
     ../../modules/steam-cmd.nix
     ./reverse-proxy.nix
+    "${inputs.stablepkgs}/nixos/modules/services/misc/paperless.nix"
+    "${inputs.stablepkgs}/nixos/modules/services/web-apps/mealie.nix"
   ];
 
   boot.loader = {
