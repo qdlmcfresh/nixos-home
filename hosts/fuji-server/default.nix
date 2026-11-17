@@ -116,18 +116,6 @@
       domains = [ secrets.home_domain ];
       ipv4 = true;
     };
-    grocy = {
-      enable = true;
-      hostName = "grocy." + secrets.domain;
-      nginx.enableSSL = true;
-      settings = {
-        currency = "EUR";
-        culture = "de";
-        calendar = {
-          firstDayOfWeek = 1;
-        };
-      };
-    };
   };
   systemd.services.vaultwarden_backup = {
     description = "Rsync backup service";
