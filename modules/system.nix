@@ -142,14 +142,6 @@
     };
     secrets = {
       "test-secret" = { };
-      "openvpn/hs-openvpn-config" = {
-        path = "/home/qdl/.config/openvpn/hs.ovpn";
-        owner = config.users.users.qdl.name;
-      };
-      "openvpn/login.conf" = {
-        path = "/home/qdl/.config/openvpn/login.conf";
-        owner = config.users.users.qdl.name;
-      };
       ssh-hosts = {
         owner = config.users.users.qdl.name;
       };

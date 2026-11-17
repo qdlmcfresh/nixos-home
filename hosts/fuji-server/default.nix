@@ -52,7 +52,6 @@
     samba = {
       enable = true;
       openFirewall = true;
-      securityType = "user";
       settings = {
         global = {
           workgroup = "WORKGROUP";
@@ -76,11 +75,12 @@
     };
     paperless = {
       enable = true;
-      package = pkgs.paperless-ngx;
+      package = pkgs.stable.paperless-ngx;
       consumptionDir = "/home/smb/scans";
       consumptionDirIsPublic = true;
       address = "0.0.0.0";
       settings = {
+        PAPERLESS_AI_ENABLED = false;
         PAPERLESS_AUTO_LOGIN_USERNAME = "admin";
         PAPERLESS_OCR_LANGUAGE = "deu+eng";
         PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
@@ -109,13 +109,6 @@
     mealie = {
       enable = true;
       package = pkgs.stable.mealie;
-    };
-    openvpn = {
-      servers = {
-        hs-vpn = {
-          config = ''config /run/secrets/openvpn/hs-openvpn-config '';
-        };
-      };
     };
     cloudflare-dyndns = {
       enable = true;

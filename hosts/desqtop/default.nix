@@ -68,14 +68,6 @@
       gnome-keyring.enable = true;
       gcr-ssh-agent.enable = false;
     };
-    openvpn = {
-      servers = {
-        hs-vpn = {
-          config = "config /run/secrets/openvpn/hs-openvpn-config ";
-          autoStart = false;
-        };
-      };
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
